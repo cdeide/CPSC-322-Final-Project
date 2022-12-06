@@ -10,7 +10,7 @@
 # Random Forest Classifier.
 ############################################################################
 
-from classifiers import classifiers_utils
+from classifier_models import classifier_utils
 
 ##############################################################
 # DUMMY CLASSIFIER
