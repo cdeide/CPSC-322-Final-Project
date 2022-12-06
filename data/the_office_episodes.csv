@@ -37,166 +37,153 @@ Season,EpisodeNumInSeason,EpisodeNumOverall,Title,DirectedBy,WrittenBy,OriginalA
 3,8,35,The Merger,Ken Whittingham,Brent Forrester,2006-11-16,3008,8630000.0
 3,9,36,The Convict,Jeffrey Blitz,Ricky Gervais & Stephen Merchant,2006-11-30,3010,9070000.0
 3,10,37,A Benihana Christmas,Harold Ramis,Jennifer Celotta,2006-12-14,3009,8440000.0
-3,11,38,A Benihana Christmas,Harold Ramis,Jennifer Celotta,2006-12-14,3014,8440000.0
-3,12,39,Back from Vacation,Julian Farino,Justin Spitzer,2007-01-04,3011,8800000.0
-3,13,40,Traveling Salesmen,Greg Daniels,Michael Schur & Lee Eisenberg & Gene Stupnitsky,2007-01-11,3012,10120000.0
-3,14,41,The Return,Greg Daniels,Lee Eisenberg & Gene Stupnitsky & Michael Schur,2007-01-18,3013,10200000.0
-3,15,42,Ben Franklin,Randall Einhorn,Mindy Kaling,2007-02-01,3015,10110000.0
-3,16,43,Phyllis' Wedding,Ken Whittingham,Caroline Williams,2007-02-08,3016,8840000.0
-3,17,44,Business School,Joss Whedon,Brent Forrester,2007-02-15,3017,8840000.0
-3,18,45,Cocktails,J. J. Abrams,Paul Lieberstein,2007-02-22,3018,8300000.000000001
-3,19,46,The Negotiation,Jeffrey Blitz,Michael Schur,2007-04-05,3019,6740000.0
-3,20,47,Safety Training,Harold Ramis,B. J. Novak,2007-04-12,3020,7710000.0
-3,21,48,Product Recall,Randall Einhorn,Justin Spitzer & Brent Forrester,2007-04-26,3025,7560000.0
-3,22,49,Women's Appreciation,Tucker Gates,Gene Stupnitsky & Lee Eisenberg,2007-05-03,3021,7000000.0
-3,23,50,Beach Games,Harold Ramis,Jennifer Celotta & Greg Daniels,2007-05-10,3022,7200000.0
-3,24,51,The Job,Ken Kwapis,Paul Lieberstein & Michael Schur,2007-05-17,3023,7880000.0
-3,25,52,The Job,Ken Kwapis,Paul Lieberstein & Michael Schur,2007-05-17,3024,7880000.0
-4,1,53,Fun Run,Greg Daniels,Greg Daniels,2007-09-27,4001,9700000.0
-4,2,54,Fun Run,Greg Daniels,Greg Daniels,2007-09-27,4002,9700000.0
-4,3,55,Dunder Mifflin Infinity,Craig Zisk,Michael Schur,2007-10-04,4003,8490000.0
-4,4,56,Dunder Mifflin Infinity,Craig Zisk,Michael Schur,2007-10-04,4004,8490000.0
-4,5,57,Launch Party,Ken Whittingham,Jennifer Celotta,2007-10-11,4005,8910000.0
-4,6,58,Launch Party,Ken Whittingham,Jennifer Celotta,2007-10-11,4006,8910000.0
-4,7,59,Money,Paul Lieberstein,Paul Lieberstein,2007-10-18,4007,8500000.0
-4,8,60,Money,Paul Lieberstein,Paul Lieberstein,2007-10-18,4008,8500000.0
-4,9,61,Local Ad,Jason Reitman,B. J. Novak,2007-10-25,4009,8980000.0
-4,10,62,Branch Wars,Joss Whedon,Mindy Kaling,2007-11-01,4010,8390000.0
-4,11,63,Survivor Man,Paul Feig,Steve Carell,2007-11-08,4011,8289999.999999999
-4,12,64,The Deposition,Julian Farino,Lester Lewis,2007-11-15,4012,8860000.0
-4,13,65,Dinner Party,Paul Feig,Gene Stupnitsky & Lee Eisenberg,2008-04-10,4013,9220000.0
-4,14,66,Chair Model,Jeffrey Blitz,B. J. Novak,2008-04-17,4014,9810000.0
-4,15,67,Night Out,Ken Whittingham,Mindy Kaling,2008-04-24,4015,7560000.0
-4,16,68,Did I Stutter?,Randall Einhorn,Brent Forrester & Justin Spitzer,2008-05-01,4016,7670000.0
-4,17,69,Job Fair,Tucker Gates,Lee Eisenberg & Gene Stupnitsky,2008-05-08,4017,7220000.0
-4,18,70,"Goodbye, Toby",Paul Feig,Jennifer Celotta & Paul Lieberstein,2008-05-15,4018,8070000.0
-4,19,71,"Goodbye, Toby",Paul Feig,Jennifer Celotta & Paul Lieberstein,2008-05-15,4019,8070000.0
-5,1,72,Weight Loss,Paul Feig,Lee Eisenberg & Gene Stupnitsky,2008-09-25,5001,9200000.0
-5,2,73,Weight Loss,Paul Feig,Lee Eisenberg & Gene Stupnitsky,2008-09-25,5002,9200000.0
-5,3,74,Business Ethics,Jeffrey Blitz,Ryan Koh,2008-10-09,5003,8990000.0
-5,4,75,Baby Shower,Greg Daniels,Aaron Shure,2008-10-16,5004,8070000.0
-5,5,76,Crime Aid,Jennifer Celotta,Charlie Grandy,2008-10-23,5005,7740000.0
-5,6,77,Employee Transfer,David Rogers,Anthony Q. Farrell,2008-10-30,5006,9320000.0
-5,7,78,Customer Survey,Stephen Merchant,Lester Lewis,2008-11-06,5007,8350000.0
-5,8,79,Business Trip,Randall Einhorn,Brent Forrester,2008-11-13,5009,8180000.0
-5,9,80,Frame Toby,Jason Reitman,Mindy Kaling,2008-11-20,5008,8400000.0
-5,10,81,The Surplus,Paul Feig,Gene Stupnitsky & Lee Eisenberg,2008-12-04,5013,8330000.0
-5,11,82,Moroccan Christmas,Paul Feig,Justin Spitzer,2008-12-11,5010,8790000.0
-5,12,83,The Duel,Dean Holland,Jennifer Celotta,2009-01-15,5011,8500000.0
-5,13,84,Prince Family Paper,Asaad Kelada,B. J. Novak,2009-01-22,5012,8740000.0
-5,14,85,Stress Relief,Jeffrey Blitz,Paul Lieberstein,2009-02-01,5016,22910000.0
-5,15,86,Stress Relief,Jeffrey Blitz,Paul Lieberstein,2009-02-01,5017,22910000.0
-5,16,87,Lecture Circuit: Part 1,Ken Kwapis,Mindy Kaling,2009-02-05,5014,8390000.0
-5,17,88,Lecture Circuit: Part 2,Ken Kwapis,Mindy Kaling,2009-02-12,5015,8890000.0
-5,18,89,Blood Drive,Randall Einhorn,Brent Forrester,2009-03-05,5018,8630000.0
-5,19,90,Golden Ticket,Randall Einhorn,Mindy Kaling,2009-03-12,5019,7510000.0
-5,20,91,New Boss,Paul Feig,Lee Eisenberg & Gene Stupnitsky,2009-03-19,5020,7950000.0
-5,21,92,Two Weeks,Paul Lieberstein,Aaron Shure,2009-03-26,5021,8450000.0
-5,22,93,Dream Team,Paul Feig,B. J. Novak,2009-04-09,5022,7200000.0
-5,23,94,Michael Scott Paper Company,Gene Stupnitsky,Justin Spitzer,2009-04-09,5023,7940000.0
-5,24,95,Heavy Competition,Ken Whittingham,Ryan Koh,2009-04-16,5024,8240000.0
-5,25,96,Broke,Steve Carell,Charlie Grandy,2009-04-23,5025,7210000.0
-5,26,97,Casual Friday,Brent Forrester,Anthony Q. Farrell,2009-04-30,5026,7310000.0
-5,27,98,Cafe Disco,Randall Einhorn,Warren Lieberstein & Halsted Sullivan,2009-05-07,5027,7710000.0
-5,28,99,Company Picnic,Ken Kwapis,Jennifer Celotta & Paul Lieberstein,2009-05-14,5028,6720000.0
-6,1,100,Gossip,Paul Lieberstein,Paul Lieberstein,2009-09-17,6001,8199999.999999999
-6,2,101,The Meeting,Randall Einhorn,Aaron Shure,2009-09-24,6002,7330000.0
-6,3,102,The Promotion,Jennifer Celotta,Jennifer Celotta,2009-10-01,6003,7280000.0
-6,4,103,Niagara: Part 1,Paul Feig,Greg Daniels & Mindy Kaling,2009-10-08,6004,9420000.0
-6,5,104,Niagara: Part 2,Paul Feig,Greg Daniels & Mindy Kaling,2009-10-08,6005,9420000.0
-6,6,105,Mafia,David Rogers,Brent Forrester,2009-10-15,6006,8100000.0
-6,7,106,The Lover,Lee Eisenberg,Lee Eisenberg & Gene Stupnitsky,2009-10-22,6007,8520000.0
-6,8,107,Koi Pond,Reggie Hudlin,Warren Lieberstein & Halsted Sullivan,2009-10-29,6009,8199999.999999999
-6,9,108,Double Date,Seth Gordon,Charlie Grandy,2009-11-05,6008,7940000.0
-6,10,109,Murder,Greg Daniels,Daniel Chun,2009-11-12,6010,7760000.0
-6,11,110,Shareholder Meeting,Charles McDougall,Justin Spitzer,2009-11-19,6011,7430000.0
-6,12,111,Scott's Tots,B. J. Novak,Gene Stupnitsky & Lee Eisenberg,2009-12-03,6013,8100000.0
-6,13,112,Secret Santa,Randall Einhorn,Mindy Kaling,2009-12-10,6014,8510000.0
-6,14,113,The Banker,Jeffrey Blitz,Jason Kessler,2010-01-21,6012,7290000.0
-6,15,114,Sabre,John Krasinski,Jennifer Celotta,2010-02-04,6015,7360000.0
-6,16,115,Manager and Salesman,Marc Webb,Mindy Kaling,2010-02-11,6016,7400000.0
-6,17,116,The Delivery: Part 1,Seth Gordon,Daniel Chun,2010-03-04,6018,9000000.0
-6,18,117,The Delivery: Part 2,Harold Ramis,Charlie Grandy,2010-03-04,6019,9000000.0
-6,19,118,St. Patrick's Day,Randall Einhorn,Jonathan Hughes,2010-03-11,6017,7510000.0
-6,20,119,New Leads,Brent Forrester,Brent Forrester,2010-03-18,6020,7630000.0
-6,21,120,Happy Hour,Matt Sohn,B. J. Novak,2010-03-25,6021,7170000.0
-6,22,121,Secretary's Day,Steve Carell,Mindy Kaling,2010-04-22,6022,6300000.0
-6,23,122,Body Language,Mindy Kaling,Justin Spitzer,2010-04-29,6023,7010000.0
-6,24,123,The Cover-Up,Rainn Wilson,Gene Stupnitsky & Lee Eisenberg,2010-05-06,6024,6840000.0
-6,25,124,The Chump,Randall Einhorn,Aaron Shure,2010-05-13,6025,6600000.0
-6,26,125,Whistleblower,Paul Lieberstein,Warren Lieberstein & Halsted Sullivan,2010-05-20,6026,6600000.0
-7,1,126,Nepotism,Jeffrey Blitz,Daniel Chun,2010-09-23,7001,8400000.0
-7,2,127,Counseling,Jeffrey Blitz,B. J. Novak,2010-09-30,7002,7360000.0
-7,3,128,Andy's Play,John Stuart Scott,Charlie Grandy,2010-10-07,7003,6950000.0
-7,4,129,Sex Ed,Paul Lieberstein,Paul Lieberstein,2010-10-14,7004,7360000.0
-7,5,130,The Sting,Randall Einhorn,Mindy Kaling,2010-10-21,7005,6870000.0
-7,6,131,Costume Contest,Dean Holland,Justin Spitzer,2010-10-28,7006,8070000.0
-7,7,132,Christening,Alex Hardcastle,Peter Ocko,2010-11-04,7007,7650000.0
-7,8,133,Viewing Party,Ken Whittingham,Jon Vitti,2010-11-11,7008,7150000.0
-7,9,134,WUPHF.com,Danny Leiner,Aaron Shure,2010-11-18,7009,7280000.0
-7,10,135,China,Charles McDougall,Halsted Sullivan & Warren Lieberstein,2010-12-02,7010,7310000.0
-7,11,136,Classy Christmas,Rainn Wilson,Mindy Kaling,2010-12-09,7011,7180000.0
-7,12,137,Classy Christmas,Rainn Wilson,Mindy Kaling,2010-12-09,7012,7180000.0
-7,13,138,Ultimatum,David Rogers,Carrie Kemper,2011-01-20,7013,8260000.0
-7,14,139,The Seminar,B. J. Novak,Steve Hely,2011-01-27,7014,7930000.0
-7,15,140,The Search,Michael Spiller,Brent Forrester,2011-02-03,7015,7290000.0
-7,16,141,PDA,Greg Daniels,Robert Padnick,2011-02-10,7017,6900000.0
-7,17,142,Threat Level Midnight,Tucker Gates,B. J. Novak,2011-02-17,7016,6410000.0
-7,18,143,Todd Packer,Randall Einhorn,Amelie Gillette,2011-02-24,7018,6120000.0
-7,19,144,Garage Sale,Steve Carell,Jon Vitti,2011-03-24,7019,7070000.0
-7,20,145,Training Day,Paul Lieberstein,Daniel Chun,2011-04-14,7020,7870000.0
-7,21,146,Michael's Last Dundies,Mindy Kaling,Mindy Kaling,2011-04-21,7021,6850000.0
-7,22,147,"Goodbye, Michael",Paul Feig,Greg Daniels,2011-04-28,7022,8420000.0
-7,23,148,The Inner Circle,Matt Sohn,Charlie Grandy,2011-05-05,7023,6900000.0
-7,24,149,"Dwight K. Schrute, (Acting) Manager",Troy Miller,Justin Spitzer,2011-05-12,7024,6450000.0
-7,25,150,Search Committee,Jeffrey Blitz,Paul Lieberstein,2011-05-19,7025,7290000.0
-7,26,151,Search Committee,Jeffrey Blitz,Paul Lieberstein,2011-05-19,7026,7290000.0
-8,1,152,The List,B. J. Novak,B. J. Novak,2011-09-22,8002,7640000.0
-8,2,153,The Incentive,Charles McDougall,Paul Lieberstein,2011-09-29,8001,6700000.0
-8,3,154,Lotto,John Krasinski,Charlie Grandy,2011-10-06,8005,5820000.0
-8,4,155,Garden Party,David Rogers,Justin Spitzer,2011-10-13,8004,6080000.0
-8,5,156,Spooked,Randall Einhorn,Carrie Kemper,2011-10-27,8006,5530000.0
-8,6,157,Doomsday,Troy Miller,Daniel Chun,2011-11-03,8003,6150000.0
-8,7,158,Pam's Replacement,Matt Sohn,Allison Silverman,2011-11-10,8007,5960000.0
-8,8,159,Gettysburg,Jeffrey Blitz,Robert Padnick,2011-11-17,8008,5500000.0
-8,9,160,Mrs. California,Charlie Grandy,Dan Greaney,2011-12-01,8009,5710000.0
-8,10,161,Christmas Wishes,Ed Helms,Mindy Kaling,2011-12-08,8010,5790000.0
-8,11,162,Trivia,B. J. Novak,Steve Hely,2012-01-12,8011,5900000.0
-8,12,163,Pool Party,Charles McDougall,Owen Ellickson,2012-01-19,8012,6020000.0
-8,13,164,Jury Duty,Eric Appel,Aaron Shure,2012-02-02,8013,5310000.0
-8,14,165,Special Project,David Rogers,Amelie Gillette,2012-02-09,8014,5190000.0
-8,15,166,Tallahassee,Matt Sohn,Daniel Chun,2012-02-16,8015,4380000.0
-8,16,167,After Hours,Brian Baumgartner,Halsted Sullivan & Warren Lieberstein,2012-02-23,8016,5020000.0
-8,17,168,Test the Store,Brent Forrester,Mindy Kaling,2012-03-01,8017,4950000.0
-8,18,169,Last Day in Florida,Matt Sohn,Robert Padnick,2012-03-08,8018,4890000.0
-8,19,170,Get the Girl,Rainn Wilson,Charlie Grandy,2012-03-15,8019,4870000.0
-8,20,171,Welcome Party,Ed Helms,Steve Hely,2012-04-12,8020,4390000.0
-8,21,172,Angry Andy,Claire Scanlon,Justin Spitzer,2012-04-19,8021,4350000.0
-8,22,173,Fundraiser,David Rogers,Owen Ellickson,2012-04-26,8022,4170000.0
-8,23,174,Turf War,Daniel Chun,Warren Lieberstein & Halsted Sullivan,2012-05-03,8023,4440000.0
-8,24,175,Free Family Portrait Studio,B. J. Novak,B. J. Novak,2012-05-10,8024,4490000.0
-9,1,176,New Guys,Greg Daniels,Greg Daniels,2012-09-20,9001,4280000.0
-9,2,177,Roy's Wedding,Matt Sohn,Allison Silverman,2012-09-27,9002,4130000.0
-9,3,178,Andy's Ancestry,David Rogers,Jonathan Green & Gabe Miller,2012-10-04,9003,4139999.9999999995
-9,4,179,Work Bus,Bryan Cranston,Brent Forrester,2012-10-18,9004,4280000.0
-9,5,180,Here Comes Treble,Claire Scanlon,Owen Ellickson,2012-10-25,9006,4000000.0
-9,6,181,The Boat,John Krasinski,Dan Sterling,2012-11-08,9007,4830000.0
-9,7,182,The Whale,Rodman Flender,Carrie Kemper,2012-11-15,9008,4160000.0
-9,8,183,The Target,Brent Forrester,Graham Wagner,2012-11-29,9009,3880000.0
-9,9,184,Dwight Christmas,Charles McDougall,Robert Padnick,2012-12-06,9010,4160000.0
-9,10,185,Lice,Rodman Flender,Niki Schwartz-Wright,2013-01-10,9011,4540000.0
-9,11,186,Suit Warehouse,Matt Sohn,Dan Greaney,2013-01-17,9012,4150000.0000000005
-9,12,187,Customer Loyalty,Kelly Cantley,Jonathan Green & Gabe Miller,2013-01-24,9013,4190000.0000000005
-9,13,188,Junior Salesman,David Rogers,Carrie Kemper,2013-01-31,9014,4450000.0
-9,14,189,Vandalism,Lee Kirk,Owen Ellickson,2013-01-31,9015,3970000.0
-9,15,190,Couples Discount,Troy Miller,Allison Silverman,2013-02-07,9016,4150000.0000000005
-9,16,191,Moving On,Jon Favreau,Graham Wagner,2013-02-14,9017,4059999.9999999995
-9,17,192,The Farm,Paul Lieberstein,Paul Lieberstein,2013-03-14,9005,3540000.0
-9,18,193,Promos,Jennifer Celotta,Tim McAuliffe,2013-04-04,9018,3440000.0
-9,19,194,Stairmageddon,Matt Sohn,Dan Sterling,2013-04-11,9019,3830000.0
-9,20,195,Paper Airplane,Jesse Peretz,Halsted Sullivan & Warren Lieberstein,2013-04-25,9020,3250000.0
-9,21,196,Livin' the Dream,Jeffrey Blitz,Niki Schwartz-Wright,2013-05-02,9021,3510000.0
-9,22,197,A.A.R.M.,David Rogers,Brent Forrester,2013-05-09,9022,4560000.0
-9,23,198,A.A.R.M.,David Rogers,Brent Forrester,2013-05-09,9023,4560000.0
-9,24,199,Finale,Ken Kwapis,Greg Daniels,2013-05-16,9024,5690000.0
-9,25,200,Finale,Ken Kwapis,Greg Daniels,2013-05-16,9025,5690000.0
+3,12,38,Back from Vacation,Julian Farino,Justin Spitzer,2007-01-04,3011,8800000.0
+3,13,39,Traveling Salesmen,Greg Daniels,Michael Schur & Lee Eisenberg & Gene Stupnitsky,2007-01-11,3012,10120000.0
+3,14,40,The Return,Greg Daniels,Lee Eisenberg & Gene Stupnitsky & Michael Schur,2007-01-18,3013,10200000.0
+3,15,41,Ben Franklin,Randall Einhorn,Mindy Kaling,2007-02-01,3015,10110000.0
+3,16,42,Phyllis' Wedding,Ken Whittingham,Caroline Williams,2007-02-08,3016,8840000.0
+3,17,43,Business School,Joss Whedon,Brent Forrester,2007-02-15,3017,8840000.0
+3,18,44,Cocktails,J. J. Abrams,Paul Lieberstein,2007-02-22,3018,8300000.000000001
+3,19,45,The Negotiation,Jeffrey Blitz,Michael Schur,2007-04-05,3019,6740000.0
+3,20,46,Safety Training,Harold Ramis,B. J. Novak,2007-04-12,3020,7710000.0
+3,21,47,Product Recall,Randall Einhorn,Justin Spitzer & Brent Forrester,2007-04-26,3025,7560000.0
+3,22,48,Women's Appreciation,Tucker Gates,Gene Stupnitsky & Lee Eisenberg,2007-05-03,3021,7000000.0
+3,23,49,Beach Games,Harold Ramis,Jennifer Celotta & Greg Daniels,2007-05-10,3022,7200000.0
+3,24,50,The Job,Ken Kwapis,Paul Lieberstein & Michael Schur,2007-05-17,3023,7880000.0
+4,1,51,Fun Run,Greg Daniels,Greg Daniels,2007-09-27,4001,9700000.0
+4,3,52,Dunder Mifflin Infinity,Craig Zisk,Michael Schur,2007-10-04,4003,8490000.0
+4,5,53,Launch Party,Ken Whittingham,Jennifer Celotta,2007-10-11,4005,8910000.0
+4,7,54,Money,Paul Lieberstein,Paul Lieberstein,2007-10-18,4007,8500000.0
+4,9,55,Local Ad,Jason Reitman,B. J. Novak,2007-10-25,4009,8980000.0
+4,10,56,Branch Wars,Joss Whedon,Mindy Kaling,2007-11-01,4010,8390000.0
+4,11,57,Survivor Man,Paul Feig,Steve Carell,2007-11-08,4011,8289999.999999999
+4,12,58,The Deposition,Julian Farino,Lester Lewis,2007-11-15,4012,8860000.0
+4,13,59,Dinner Party,Paul Feig,Gene Stupnitsky & Lee Eisenberg,2008-04-10,4013,9220000.0
+4,14,60,Chair Model,Jeffrey Blitz,B. J. Novak,2008-04-17,4014,9810000.0
+4,15,61,Night Out,Ken Whittingham,Mindy Kaling,2008-04-24,4015,7560000.0
+4,16,62,Did I Stutter?,Randall Einhorn,Brent Forrester & Justin Spitzer,2008-05-01,4016,7670000.0
+4,17,63,Job Fair,Tucker Gates,Lee Eisenberg & Gene Stupnitsky,2008-05-08,4017,7220000.0
+4,18,64,"Goodbye, Toby",Paul Feig,Jennifer Celotta & Paul Lieberstein,2008-05-15,4018,8070000.0
+5,1,65,Weight Loss,Paul Feig,Lee Eisenberg & Gene Stupnitsky,2008-09-25,5001,9200000.0
+5,3,66,Business Ethics,Jeffrey Blitz,Ryan Koh,2008-10-09,5003,8990000.0
+5,4,67,Baby Shower,Greg Daniels,Aaron Shure,2008-10-16,5004,8070000.0
+5,5,68,Crime Aid,Jennifer Celotta,Charlie Grandy,2008-10-23,5005,7740000.0
+5,6,69,Employee Transfer,David Rogers,Anthony Q. Farrell,2008-10-30,5006,9320000.0
+5,7,70,Customer Survey,Stephen Merchant,Lester Lewis,2008-11-06,5007,8350000.0
+5,8,71,Business Trip,Randall Einhorn,Brent Forrester,2008-11-13,5009,8180000.0
+5,9,72,Frame Toby,Jason Reitman,Mindy Kaling,2008-11-20,5008,8400000.0
+5,10,73,The Surplus,Paul Feig,Gene Stupnitsky & Lee Eisenberg,2008-12-04,5013,8330000.0
+5,11,74,Moroccan Christmas,Paul Feig,Justin Spitzer,2008-12-11,5010,8790000.0
+5,12,75,The Duel,Dean Holland,Jennifer Celotta,2009-01-15,5011,8500000.0
+5,13,76,Prince Family Paper,Asaad Kelada,B. J. Novak,2009-01-22,5012,8740000.0
+5,14,77,Stress Relief,Jeffrey Blitz,Paul Lieberstein,2009-02-01,5016,22910000.0
+5,16,78,Lecture Circuit: Part 1,Ken Kwapis,Mindy Kaling,2009-02-05,5014,8390000.0
+5,17,79,Lecture Circuit: Part 2,Ken Kwapis,Mindy Kaling,2009-02-12,5015,8890000.0
+5,18,80,Blood Drive,Randall Einhorn,Brent Forrester,2009-03-05,5018,8630000.0
+5,19,81,Golden Ticket,Randall Einhorn,Mindy Kaling,2009-03-12,5019,7510000.0
+5,20,82,New Boss,Paul Feig,Lee Eisenberg & Gene Stupnitsky,2009-03-19,5020,7950000.0
+5,21,83,Two Weeks,Paul Lieberstein,Aaron Shure,2009-03-26,5021,8450000.0
+5,22,84,Dream Team,Paul Feig,B. J. Novak,2009-04-09,5022,7200000.0
+5,23,85,Michael Scott Paper Company,Gene Stupnitsky,Justin Spitzer,2009-04-09,5023,7940000.0
+5,24,86,Heavy Competition,Ken Whittingham,Ryan Koh,2009-04-16,5024,8240000.0
+5,25,87,Broke,Steve Carell,Charlie Grandy,2009-04-23,5025,7210000.0
+5,26,88,Casual Friday,Brent Forrester,Anthony Q. Farrell,2009-04-30,5026,7310000.0
+5,27,89,Cafe Disco,Randall Einhorn,Warren Lieberstein & Halsted Sullivan,2009-05-07,5027,7710000.0
+5,28,90,Company Picnic,Ken Kwapis,Jennifer Celotta & Paul Lieberstein,2009-05-14,5028,6720000.0
+6,1,91,Gossip,Paul Lieberstein,Paul Lieberstein,2009-09-17,6001,8199999.999999999
+6,2,92,The Meeting,Randall Einhorn,Aaron Shure,2009-09-24,6002,7330000.0
+6,3,93,The Promotion,Jennifer Celotta,Jennifer Celotta,2009-10-01,6003,7280000.0
+6,4,94,Niagara: Part 1,Paul Feig,Greg Daniels & Mindy Kaling,2009-10-08,6004,9420000.0
+6,5,95,Niagara: Part 2,Paul Feig,Greg Daniels & Mindy Kaling,2009-10-08,6005,9420000.0
+6,6,96,Mafia,David Rogers,Brent Forrester,2009-10-15,6006,8100000.0
+6,7,97,The Lover,Lee Eisenberg,Lee Eisenberg & Gene Stupnitsky,2009-10-22,6007,8520000.0
+6,8,98,Koi Pond,Reggie Hudlin,Warren Lieberstein & Halsted Sullivan,2009-10-29,6009,8199999.999999999
+6,9,99,Double Date,Seth Gordon,Charlie Grandy,2009-11-05,6008,7940000.0
+6,10,100,Murder,Greg Daniels,Daniel Chun,2009-11-12,6010,7760000.0
+6,11,101,Shareholder Meeting,Charles McDougall,Justin Spitzer,2009-11-19,6011,7430000.0
+6,12,102,Scott's Tots,B. J. Novak,Gene Stupnitsky & Lee Eisenberg,2009-12-03,6013,8100000.0
+6,13,103,Secret Santa,Randall Einhorn,Mindy Kaling,2009-12-10,6014,8510000.0
+6,14,104,The Banker,Jeffrey Blitz,Jason Kessler,2010-01-21,6012,7290000.0
+6,15,105,Sabre,John Krasinski,Jennifer Celotta,2010-02-04,6015,7360000.0
+6,16,106,Manager and Salesman,Marc Webb,Mindy Kaling,2010-02-11,6016,7400000.0
+6,17,107,The Delivery: Part 1,Seth Gordon,Daniel Chun,2010-03-04,6018,9000000.0
+6,18,108,The Delivery: Part 2,Harold Ramis,Charlie Grandy,2010-03-04,6019,9000000.0
+6,19,109,St. Patrick's Day,Randall Einhorn,Jonathan Hughes,2010-03-11,6017,7510000.0
+6,20,110,New Leads,Brent Forrester,Brent Forrester,2010-03-18,6020,7630000.0
+6,21,111,Happy Hour,Matt Sohn,B. J. Novak,2010-03-25,6021,7170000.0
+6,22,112,Secretary's Day,Steve Carell,Mindy Kaling,2010-04-22,6022,6300000.0
+6,23,113,Body Language,Mindy Kaling,Justin Spitzer,2010-04-29,6023,7010000.0
+6,24,114,The Cover-Up,Rainn Wilson,Gene Stupnitsky & Lee Eisenberg,2010-05-06,6024,6840000.0
+6,25,115,The Chump,Randall Einhorn,Aaron Shure,2010-05-13,6025,6600000.0
+6,26,116,Whistleblower,Paul Lieberstein,Warren Lieberstein & Halsted Sullivan,2010-05-20,6026,6600000.0
+7,1,117,Nepotism,Jeffrey Blitz,Daniel Chun,2010-09-23,7001,8400000.0
+7,2,118,Counseling,Jeffrey Blitz,B. J. Novak,2010-09-30,7002,7360000.0
+7,3,119,Andy's Play,John Stuart Scott,Charlie Grandy,2010-10-07,7003,6950000.0
+7,4,120,Sex Ed,Paul Lieberstein,Paul Lieberstein,2010-10-14,7004,7360000.0
+7,5,121,The Sting,Randall Einhorn,Mindy Kaling,2010-10-21,7005,6870000.0
+7,6,122,Costume Contest,Dean Holland,Justin Spitzer,2010-10-28,7006,8070000.0
+7,7,123,Christening,Alex Hardcastle,Peter Ocko,2010-11-04,7007,7650000.0
+7,8,124,Viewing Party,Ken Whittingham,Jon Vitti,2010-11-11,7008,7150000.0
+7,9,125,WUPHF.com,Danny Leiner,Aaron Shure,2010-11-18,7009,7280000.0
+7,10,126,China,Charles McDougall,Halsted Sullivan & Warren Lieberstein,2010-12-02,7010,7310000.0
+7,11,127,Classy Christmas,Rainn Wilson,Mindy Kaling,2010-12-09,7011,7180000.0
+7,13,128,Ultimatum,David Rogers,Carrie Kemper,2011-01-20,7013,8260000.0
+7,14,129,The Seminar,B. J. Novak,Steve Hely,2011-01-27,7014,7930000.0
+7,15,130,The Search,Michael Spiller,Brent Forrester,2011-02-03,7015,7290000.0
+7,16,131,PDA,Greg Daniels,Robert Padnick,2011-02-10,7017,6900000.0
+7,17,132,Threat Level Midnight,Tucker Gates,B. J. Novak,2011-02-17,7016,6410000.0
+7,18,133,Todd Packer,Randall Einhorn,Amelie Gillette,2011-02-24,7018,6120000.0
+7,19,134,Garage Sale,Steve Carell,Jon Vitti,2011-03-24,7019,7070000.0
+7,20,135,Training Day,Paul Lieberstein,Daniel Chun,2011-04-14,7020,7870000.0
+7,21,136,Michael's Last Dundies,Mindy Kaling,Mindy Kaling,2011-04-21,7021,6850000.0
+7,22,137,"Goodbye, Michael",Paul Feig,Greg Daniels,2011-04-28,7022,8420000.0
+7,23,138,The Inner Circle,Matt Sohn,Charlie Grandy,2011-05-05,7023,6900000.0
+7,24,139,"Dwight K. Schrute, (Acting) Manager",Troy Miller,Justin Spitzer,2011-05-12,7024,6450000.0
+7,25,140,Search Committee,Jeffrey Blitz,Paul Lieberstein,2011-05-19,7025,7290000.0
+8,1,141,The List,B. J. Novak,B. J. Novak,2011-09-22,8002,7640000.0
+8,2,142,The Incentive,Charles McDougall,Paul Lieberstein,2011-09-29,8001,6700000.0
+8,3,143,Lotto,John Krasinski,Charlie Grandy,2011-10-06,8005,5820000.0
+8,4,144,Garden Party,David Rogers,Justin Spitzer,2011-10-13,8004,6080000.0
+8,5,145,Spooked,Randall Einhorn,Carrie Kemper,2011-10-27,8006,5530000.0
+8,6,146,Doomsday,Troy Miller,Daniel Chun,2011-11-03,8003,6150000.0
+8,7,147,Pam's Replacement,Matt Sohn,Allison Silverman,2011-11-10,8007,5960000.0
+8,8,148,Gettysburg,Jeffrey Blitz,Robert Padnick,2011-11-17,8008,5500000.0
+8,9,149,Mrs. California,Charlie Grandy,Dan Greaney,2011-12-01,8009,5710000.0
+8,10,150,Christmas Wishes,Ed Helms,Mindy Kaling,2011-12-08,8010,5790000.0
+8,11,151,Trivia,B. J. Novak,Steve Hely,2012-01-12,8011,5900000.0
+8,12,152,Pool Party,Charles McDougall,Owen Ellickson,2012-01-19,8012,6020000.0
+8,13,153,Jury Duty,Eric Appel,Aaron Shure,2012-02-02,8013,5310000.0
+8,14,154,Special Project,David Rogers,Amelie Gillette,2012-02-09,8014,5190000.0
+8,15,155,Tallahassee,Matt Sohn,Daniel Chun,2012-02-16,8015,4380000.0
+8,16,156,After Hours,Brian Baumgartner,Halsted Sullivan & Warren Lieberstein,2012-02-23,8016,5020000.0
+8,17,157,Test the Store,Brent Forrester,Mindy Kaling,2012-03-01,8017,4950000.0
+8,18,158,Last Day in Florida,Matt Sohn,Robert Padnick,2012-03-08,8018,4890000.0
+8,19,159,Get the Girl,Rainn Wilson,Charlie Grandy,2012-03-15,8019,4870000.0
+8,20,160,Welcome Party,Ed Helms,Steve Hely,2012-04-12,8020,4390000.0
+8,21,161,Angry Andy,Claire Scanlon,Justin Spitzer,2012-04-19,8021,4350000.0
+8,22,162,Fundraiser,David Rogers,Owen Ellickson,2012-04-26,8022,4170000.0
+8,23,163,Turf War,Daniel Chun,Warren Lieberstein & Halsted Sullivan,2012-05-03,8023,4440000.0
+8,24,164,Free Family Portrait Studio,B. J. Novak,B. J. Novak,2012-05-10,8024,4490000.0
+9,1,165,New Guys,Greg Daniels,Greg Daniels,2012-09-20,9001,4280000.0
+9,2,166,Roy's Wedding,Matt Sohn,Allison Silverman,2012-09-27,9002,4130000.0
+9,3,167,Andy's Ancestry,David Rogers,Jonathan Green & Gabe Miller,2012-10-04,9003,4139999.9999999995
+9,4,168,Work Bus,Bryan Cranston,Brent Forrester,2012-10-18,9004,4280000.0
+9,5,169,Here Comes Treble,Claire Scanlon,Owen Ellickson,2012-10-25,9006,4000000.0
+9,6,170,The Boat,John Krasinski,Dan Sterling,2012-11-08,9007,4830000.0
+9,7,171,The Whale,Rodman Flender,Carrie Kemper,2012-11-15,9008,4160000.0
+9,8,172,The Target,Brent Forrester,Graham Wagner,2012-11-29,9009,3880000.0
+9,9,173,Dwight Christmas,Charles McDougall,Robert Padnick,2012-12-06,9010,4160000.0
+9,10,174,Lice,Rodman Flender,Niki Schwartz-Wright,2013-01-10,9011,4540000.0
+9,11,175,Suit Warehouse,Matt Sohn,Dan Greaney,2013-01-17,9012,4150000.0000000005
+9,12,176,Customer Loyalty,Kelly Cantley,Jonathan Green & Gabe Miller,2013-01-24,9013,4190000.0000000005
+9,13,177,Junior Salesman,David Rogers,Carrie Kemper,2013-01-31,9014,4450000.0
+9,14,178,Vandalism,Lee Kirk,Owen Ellickson,2013-01-31,9015,3970000.0
+9,15,179,Couples Discount,Troy Miller,Allison Silverman,2013-02-07,9016,4150000.0000000005
+9,16,180,Moving On,Jon Favreau,Graham Wagner,2013-02-14,9017,4059999.9999999995
+9,17,181,The Farm,Paul Lieberstein,Paul Lieberstein,2013-03-14,9005,3540000.0
+9,18,182,Promos,Jennifer Celotta,Tim McAuliffe,2013-04-04,9018,3440000.0
+9,19,183,Stairmageddon,Matt Sohn,Dan Sterling,2013-04-11,9019,3830000.0
+9,20,184,Paper Airplane,Jesse Peretz,Halsted Sullivan & Warren Lieberstein,2013-04-25,9020,3250000.0
+9,21,185,Livin' the Dream,Jeffrey Blitz,Niki Schwartz-Wright,2013-05-02,9021,3510000.0
+9,22,186,A.A.R.M.,David Rogers,Brent Forrester,2013-05-09,9022,4560000.0
+9,24,187,Finale,Ken Kwapis,Greg Daniels,2013-05-16,9024,5690000.0
