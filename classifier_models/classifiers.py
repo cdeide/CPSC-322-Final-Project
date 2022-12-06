@@ -45,7 +45,7 @@ class MyDummyClassifier:
                 only saves the most frequent class label.
         """
         # Find the most frequent class label
-        self.most_common_label = classifiers_utils.find_majority_1D(y_train)
+        self.most_common_label = classifier_utils.find_majority_1D(y_train)
 
     def predict(self, X_test):
         """Makes predictions for test instances in X_test.
@@ -121,10 +121,10 @@ class MyKNeighborsClassifier:
             categorical = False
 
         # Get indices and distances
-        row_indexes_dists = classifiers_utils.get_indices_and_dists(self, X_test, categorical)
+        row_indexes_dists = classifier_utils.get_indices_and_dists(self, X_test, categorical)
         # Get the k_closest neighbors indexes and values for each
         # row within total distances
-        total_neighbors = classifiers_utils.get_kclosest_neighbors(self, row_indexes_dists)
+        total_neighbors = classifier_utils.get_kclosest_neighbors(self, row_indexes_dists)
         # Create neighbor_indices and distances from total_neighbors
         neighbor_indices = []
         distances = []
@@ -156,10 +156,10 @@ class MyKNeighborsClassifier:
         # Like the kneighbors function, need the neighbor indices to gather the corresponding
         # values in y_train, then use majority rule to predict a classification for X_test
         # Get indices and distances
-        row_indexes_dists = classifiers_utils.get_indices_and_dists(self, X_test, categorical)
+        row_indexes_dists = classifier_utils.get_indices_and_dists(self, X_test, categorical)
         # Get the k_closest neighbors indexes and values for each
         # row within total distances
-        total_neighbors = classifiers_utils.get_kclosest_neighbors(self, row_indexes_dists)
+        total_neighbors = classifier_utils.get_kclosest_neighbors(self, row_indexes_dists)
         # Get the indexes of the k_closest_neighbors
         neighbor_indices = []
         for row in total_neighbors:
@@ -175,7 +175,7 @@ class MyKNeighborsClassifier:
                 k_neighbors_classification.append(self.y_train[index])
             k_neighbors_classifications.append(k_neighbors_classification)
         # Use majority rule to predict the class
-        y_predicted = classifiers_utils.find_majority_2D(k_neighbors_classifications)
+        y_predicted = classifier_utils.find_majority_2D(k_neighbors_classifications)
 
         return y_predicted
 
@@ -222,7 +222,7 @@ class MyNaiveBayesClassifier:
         y_copy = y_train.copy()
 
         # Get unique class labels
-        classifications_count, classifications = classifiers_utils.group_by_classification(y_train)
+        classifications_count, classifications = classifier_utils.group_by_classification(y_train)
         self.classifications = classifications
 
         # Compute priors
@@ -234,7 +234,7 @@ class MyNaiveBayesClassifier:
                     priors[classification] += 1
             priors[classification] = priors[classification] / len(y_copy)
         # Compute posteriors
-        posteriors = classifiers_utils.compute_posteriors(X_copy, y_copy, classifications, classifications_count)
+        posteriors = classifier_utils.compute_posteriors(X_copy, y_copy, classifications, classifications_count)
 
         self.priors = priors
         self.posteriors = posteriors
@@ -261,7 +261,7 @@ class MyNaiveBayesClassifier:
                 prediction *= self.priors[classification]
                 predictions[classification] = prediction
             # Choose the correct instance
-            prediction = classifiers_utils.find_naive_prediction(predictions, self.classifications, self.priors)
+            prediction = classifier_utils.find_naive_prediction(predictions, self.classifications, self.priors)
             y_predicted.append(prediction)
 
         return y_predicted

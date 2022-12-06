@@ -203,3 +203,165 @@ def find_naive_prediction(predictions, classifications, priors):
             return max_prior
     return max_class
 
+def shuffle_data(random_state, X, y=None):
+    """
+    This function shuffles two parallel lists randomly while keeping them parellel.
+    If y is none, only shuffle X
+
+    Args:
+        random_state (int): an integer used for seeding np.random
+        X (list of list): A 2D list of values to be sorted parallel to y
+        y (list, optional): A list of values to be sorted parallel to X. Defaults to None.
+
+    Returns:
+        X and y: returns the now shuffled parellel lists
+    """
+
+    if random_state is not None:
+        np.random.seed(random_state)
+
+    # shuffle indexes
+    for i in range(len(X)):
+        rand_idx = np.random.randint(len(X))
+        X[i], X[rand_idx] = X[rand_idx], X[i]
+        if y is not None:
+            y[i], y[rand_idx] = y[rand_idx], y[i]
+
+    return X, y
+
+def split_data(n_splits, X):
+    """
+    Function splits the dataset X as evenly as possible into n partitions
+
+    Args:
+        n_splits (int): number of partitions to split data into
+        X (list of list): dataset that needs to be split up
+
+    Returns:
+        list of list: A 2D list with lists of split data from X
+    """
+
+    splits = []
+    for _ in range(n_splits):
+        splits.append([])
+    idx = 0
+    for i in range(len(X)):
+        splits[idx].append(i)
+        # Check for looping back around
+        if idx == n_splits - 1:
+            idx = 0
+        else:
+            idx += 1
+
+    return splits
+
+def split_stratified_data(n_splits, group_indices):
+    """
+    Function splits the stratified dataset as evenly as possible into n partitions
+    Differs from split_data as the original dataset has already been split into
+    groups based on classification
+
+    Args:
+        n_splits (int): number of partitions to split data into
+        group_indices (list of list): each row in this 2D list is a list of all of the
+        indexes with corresponding attributes
+
+    Returns:
+        list of list: A 2D list with lists of stratified split data from X
+    """
+
+    splits = []
+    for _ in range(n_splits):
+        splits.append([])
+    idx = 0
+    for group in group_indices:
+        for i in range(len(group)):
+            splits[idx].append(group[i])
+            # Check for looping back around
+            if idx == n_splits - 1:
+                idx = 0
+            else:
+                idx += 1
+
+    return splits
+
+def fold_data(n_splits, splits):
+    """
+    Function 'folds' the data into k tuples. Each tuple has a test set and a training set
+
+    Args:
+        n_splits (int): the number of splits in the lists splits
+        splits (list of list): A 2D list, each row is a split from the dataset that needs to be folded
+
+    Returns:
+        list of list: a list of tuples, each with a test set and train set
+    """
+
+    folds = []
+    for test_idx in range(n_splits):
+        train_set = []
+        for idx in range(n_splits):
+            if idx == test_idx:
+                test_set = splits[idx]
+            elif idx != test_idx:
+                train_set += splits[idx]
+        folds.append((train_set, test_set))
+        del train_set
+        del test_set
+    
+    return folds
+
+def group_by_index(y):
+    """
+    Function creates a list for each classification present in y.
+    Then groups the indexes of the elements into their corresponding
+    classification
+
+    Args:
+        y (list): listof classification values
+
+    Returns:
+        list of list: A 2D list where each list is a group of indexes with the
+        same classification value
+    """
+
+    groups = []
+    classes = []
+    for i in range(len(y)):
+        if y[i] not in classes:
+            classes.append(y[i])
+            groups.append([])
+
+    for i in range(len(y)):
+        for j, classification in enumerate(classes):
+            if y[i] == classification:
+                groups[j].append(i)
+                break
+
+    return groups
+
+def group_by_classification(y):
+    """
+    Function builds a list of classifications. One for every unique classification
+    in the given list. (Gets rid of dups). It also counts how many times each unique attribute
+    occurs and builds a list parralel to the classification list
+    Args:
+        y (list): list of classifications
+    Returns:
+        list: list of one of each unique classification within y
+    """
+
+    classifications = []
+    classifications_count = []
+    for i in range(len(y)):
+        if y[i] not in classifications:
+            classifications.append(y[i])
+            classifications_count.append(0)
+
+    for i, classification in enumerate(classifications):
+        for j in range(len(y)):
+            if classification == y[j]:
+                classifications_count[i] += 1
+
+    return classifications_count, classifications
+
