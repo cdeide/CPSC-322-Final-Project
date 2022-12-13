@@ -243,10 +243,48 @@ class MyDecisionTreeClassifier:
 # Random Forest Classifier
 ##############################################################
 class MyRandomForestClassifier:
-    def __init__(self, N, M):
-        """Class initializer
+    """
+    Represents a Random Forest Classifier
+
+    Attributes:
+        remainder_set(list of list): The 2D list of training data after creating the random stratified
+            test set from a third of the original dataset
+        N (int): The number of weak learners.
+        M (int): The number of better learners.
+        rand_forest(list of MyDecisionTreeClassifiers): The decision tree classifiers making up the
+            random forest
+    Notes:
+        Loosely based on sklearn's RandomForestClassifier:
+            https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+    """
+
+    def __init__(self, N, M, F, rand_state=None):
         """
+        Class initializer
+        """
+        self.remainder_set = None
         self.N = N
         self.M = M
-        
+        self.F = F
+        self.rand_forest = None
+        self.rand_state = rand_state
+
+    def fit(self, remainder_set):
+
+        self.remainder_set = remainder_set
+        # Build random forest classifier from remainder_set and M, N, and F values
+        classifier_utils.get_rand_forest(self.N, self.M, self.F, remainder_set)
+
+    def predict(self, X_test):
+        """Makes predictions for test instances in X_test.
+        Args:
+            X_test(list of list of obj): The list of testing samples
+                The shape of X_test is (n_test_samples, n_features)
+        Returns:
+            y_predicted(list of obj): The predicted target y values (parallel to X_test)
+        """
+        y_predicted = []
+        for row in X_test:
+            y_predicted.append(classifier_utils.get_forest_prediction(self.rand_forest, row))
+        return y_predicted
 

@@ -656,3 +656,11 @@ def find_rule(self, tree_level, rule, attribute_names=None, class_name=None):
         return ""
 
     return rule
+
+def get_forest_prediction(rand_forest, row):
+
+    predictions = []
+    for tree in rand_forest:
+        predictions.append(find_tree_prediction(tree.tree, row))
+    return(find_majority_1D(predictions))
+

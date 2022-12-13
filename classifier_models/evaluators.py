@@ -15,6 +15,61 @@
 from classifier_models import classifier_utils
 import numpy as np # use numpy's random number generation
 
+def train_test_split(X, y, test_size=0.33, random_state=None, shuffle=True):
+    """Split dataset into train and test sets based on a test set size.
+
+    Args:
+        X(list of list of obj): The list of samples
+            The shape of X is (n_samples, n_features)
+        y(list of obj): The target y values (parallel to X)
+            The shape of y is n_samples
+        test_size(float or int): float for proportion of dataset to be in test set (e.g. 0.33 for a 2:1 split)
+            or int for absolute number of instances to be in test set (e.g. 5 for 5 instances in test set)
+        random_state(int): integer used for seeding a random number generator for reproducible results
+            Use random_state to seed your random number generator
+                you can use the math module or use numpy for your generator
+                choose one and consistently use that generator throughout your code
+        shuffle(bool): whether or not to randomize the order of the instances before splitting
+            Shuffle the rows in X and y before splitting and be sure to maintain the parallel order of X and y!!
+
+    Returns:
+        X_train(list of list of obj): The list of training samples
+        X_test(list of list of obj): The list of testing samples
+        y_train(list of obj): The list of target y values for training (parallel to X_train)
+        y_test(list of obj): The list of target y values for testing (parallel to X_test)
+
+    Note:
+        Loosely based on sklearn's train_test_split():
+            https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+    """
+
+    # Copy data params
+    X_copy = X.copy()
+    y_copy = y.copy()
+
+    # Get size of test instances given the test_size
+    if type(test_size) == int:
+        test_size_int = test_size
+    elif type(test_size) == float:
+        test_size_int = int(np.ceil(test_size * len(X)))
+
+    # Shuffle if True
+    if shuffle:
+        X_copy, y_copy = classifier_utils.shuffle_data(random_state, X_copy, y_copy)
+
+    # Build X_train, X_test and y_train, y_test
+    X_train = X_copy
+    y_train = y_copy
+    X_test = []
+    y_test = []
+    for _ in range(test_size_int):
+        X_test.insert(0, X_train[-1])
+        y_test.insert(0, y_train[-1])
+        X_train.pop(-1)
+        y_train.pop(-1)
+
+    return X_train, X_test, y_train, y_test
+
 def kfold_split(X, n_splits=5, random_state=None, shuffle=False):
     """Split dataset into cross validation folds.
 
