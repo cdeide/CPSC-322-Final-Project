@@ -65,122 +65,6 @@ class MyDummyClassifier:
 
 
 ##############################################################
-# KNEIGHBORS CLASSIFIER
-##############################################################
-class MyKNeighborsClassifier:
-    """Represents a simple k nearest neighbors classifier.
-    Attributes:
-        n_neighbors(int): number of k neighbors
-        X_train(list of list of numeric vals): The list of training instances (samples).
-                The shape of X_train is (n_train_samples, n_features)
-        y_train(list of obj): The target y values (parallel to X_train).
-            The shape of y_train is n_samples
-    Notes:
-        Loosely based on sklearn's KNeighborsClassifier:
-            https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
-        Terminology: instance = sample = row and attribute = feature = column
-        Assumes data has been properly normalized before use.
-    """
-    def __init__(self, n_neighbors=3):
-        """Initializer for MyKNeighborsClassifier.
-        Args:
-            n_neighbors(int): number of k neighbors
-        """
-        self.n_neighbors = n_neighbors
-        self.X_train = None
-        self.y_train = None
-
-    def fit(self, X_train, y_train):
-        """Fits a kNN classifier to X_train and y_train.
-        Args:
-            X_train(list of list of numeric vals): The list of training instances (samples).
-                The shape of X_train is (n_train_samples, n_features)
-            y_train(list of obj): The target y values (parallel to X_train)
-                The shape of y_train is n_train_samples
-        Notes:
-            Since kNN is a lazy learning algorithm, this method just stores X_train and y_train
-        """
-        self.X_train = X_train
-        self.y_train = y_train
-
-    def kneighbors(self, X_test):
-        """Determines the k closest neighbors of each test instance.
-        Args:
-            X_test(list of list of numeric vals): The list of testing samples
-                The shape of X_test is (n_test_samples, n_features)
-        Returns:
-            distances(list of list of float): 2D list of k nearest neighbor distances
-                for each instance in X_test
-            neighbor_indices(list of list of int): 2D list of k nearest neighbor
-                indices in X_train (parallel to distances)
-        """
-        # Check if X contains categorical attributes
-        if type(X_test[0][0]) == str:
-            categorical = True
-        else:
-            categorical = False
-
-        # Get indices and distances
-        row_indexes_dists = classifier_utils.get_indices_and_dists(self, X_test, categorical)
-        # Get the k_closest neighbors indexes and values for each
-        # row within total distances
-        total_neighbors = classifier_utils.get_kclosest_neighbors(self, row_indexes_dists)
-        # Create neighbor_indices and distances from total_neighbors
-        neighbor_indices = []
-        distances = []
-        for row in total_neighbors:
-            row_of_neighbor_indices = []
-            row_of_distances = []
-            for index_distance in row:
-                row_of_neighbor_indices.append(index_distance[0])
-                row_of_distances.append(index_distance[1])
-            neighbor_indices.append(row_of_neighbor_indices)
-            distances.append(row_of_distances)
-
-        return distances, neighbor_indices
-
-    def predict(self, X_test):
-        """Makes predictions for test instances in X_test.
-        Args:
-            X_test(list of list of numeric vals): The list of testing samples
-                The shape of X_test is (n_test_samples, n_features)
-        Returns:
-            y_predicted(list of obj): The predicted target y values (parallel to X_test)
-        """
-        # Check if X contains categorical attributes
-        if type(X_test[0][0]) == str:
-            categorical = True
-        else:
-            categorical = False
-
-        # Like the kneighbors function, need the neighbor indices to gather the corresponding
-        # values in y_train, then use majority rule to predict a classification for X_test
-        # Get indices and distances
-        row_indexes_dists = classifier_utils.get_indices_and_dists(self, X_test, categorical)
-        # Get the k_closest neighbors indexes and values for each
-        # row within total distances
-        total_neighbors = classifier_utils.get_kclosest_neighbors(self, row_indexes_dists)
-        # Get the indexes of the k_closest_neighbors
-        neighbor_indices = []
-        for row in total_neighbors:
-            row_of_neighbor_indices = []
-            for index_distance in row:
-                row_of_neighbor_indices.append(index_distance[0])
-            neighbor_indices.append(row_of_neighbor_indices)
-        # Find the corresponding classification in y_train
-        k_neighbors_classifications = []
-        for row in neighbor_indices:
-            k_neighbors_classification = []
-            for index in row:
-                k_neighbors_classification.append(self.y_train[index])
-            k_neighbors_classifications.append(k_neighbors_classification)
-        # Use majority rule to predict the class
-        y_predicted = classifier_utils.find_majority_2D(k_neighbors_classifications)
-
-        return y_predicted
-
-
-##############################################################
 # NAIVE BAYES CLASSIFIER
 ##############################################################
 class MyNaiveBayesClassifier:
@@ -265,3 +149,104 @@ class MyNaiveBayesClassifier:
             y_predicted.append(prediction)
 
         return y_predicted
+
+
+##############################################################
+# Decision Tree Classifier
+##############################################################
+class MyDecisionTreeClassifier:
+    """Represents a decision tree classifier.
+    Attributes:
+        X_train(list of list of obj): The list of training instances (samples).
+                The shape of X_train is (n_train_samples, n_features)
+        y_train(list of obj): The target y values (parallel to X_train).
+            The shape of y_train is n_samples
+        tree(nested list): The extracted tree model.
+    Notes:
+        Loosely based on sklearn's DecisionTreeClassifier:
+            https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+        Terminology: instance = sample = row and attribute = feature = column
+    """
+    def __init__(self):
+        """Initializer for MyDecisionTreeClassifier.
+        """
+        self.X_train = None
+        self.y_train = None
+        self.header = None
+        self.tree = None
+
+    def fit(self, X_train, y_train):
+        """Fits a decision tree classifier to X_train and y_train using the TDIDT
+        (top down induction of decision tree) algorithm.
+        Args:
+            X_train(list of list of obj): The list of training instances (samples).
+                The shape of X_train is (n_train_samples, n_features)
+            y_train(list of obj): The target y values (parallel to X_train)
+                The shape of y_train is n_train_samples
+        Notes:
+            Since TDIDT is an eager learning algorithm, this method builds a decision tree model
+                from the training data.
+            Build a decision tree using the nested list representation described in class.
+            On a majority vote tie, choose first attribute value based on attribute domain ordering.
+            Store the tree in the tree attribute.
+            Use attribute indexes to construct default attribute names (e.g. "att0", "att1", ...).
+        """
+
+        # Build string of arbitrary attribute names
+        available_attributes = []
+        for i in range(len(X_train[0])):
+            available_attributes.append("att" + str(i))
+        self.header = available_attributes.copy()
+        # Build dictionary of attribute domains
+        attribute_domains = {}
+        for i in range(len(X_train[0])):
+            attribute_domains["att" + str(i)] = []
+            for row in X_train:
+                if row[i] not in attribute_domains["att" + str(i)]:
+                    attribute_domains["att" + str(i)].append(row[i])
+
+        # Combine X_train and y_train
+        train = [X_train[i] + [y_train[i]] for i in range(len(X_train))]
+
+        # Call TDIDT
+        tree = classifier_utils.tdidt(self, train, available_attributes, attribute_domains)
+        self.tree = tree
+
+    def predict(self, X_test):
+        """Makes predictions for test instances in X_test.
+        Args:
+            X_test(list of list of obj): The list of testing samples
+                The shape of X_test is (n_test_samples, n_features)
+        Returns:
+            y_predicted(list of obj): The predicted target y values (parallel to X_test)
+        """
+        predictions = []
+        for instance in X_test:
+            prediction = classifier_utils.find_tree_prediction(self.tree, instance)
+            predictions.append(prediction)
+        return predictions
+
+    def print_decision_rules(self, attribute_names=None, class_name="class"):
+        """Prints the decision rules from the tree in the format
+        "IF att == val AND ... THEN class = label", one rule on each line.
+        Args:
+            attribute_names(list of str or None): A list of attribute names to use in the decision rules
+                (None if a list is not provided and the default attribute names based on indexes
+                (e.g. "att0", "att1", ...) should be used).
+            class_name(str): A string to use for the class name in the decision rules
+                ("class" if a string is not provided and the default name "class" should be used).
+        """
+        # Call recursive function
+        classifier_utils.find_rule(self, self.tree, "", attribute_names, class_name)
+
+##############################################################
+# Random Forest Classifier
+##############################################################
+class MyRandomForestClassifier:
+    def __init__(self, N, M):
+        """Class initializer
+        """
+        self.N = N
+        self.M = M
+        
+

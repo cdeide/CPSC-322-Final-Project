@@ -12,9 +12,14 @@
 
 import numpy as np
 
-from classifiers import MyNaiveBayesClassifier
-from classifiers import MyKNeighborsClassifier
-from classifiers import MyDummyClassifier
+from classifier_models.classifiers import (
+    MyDummyClassifier,
+    MyNaiveBayesClassifier,
+    MyDecisionTreeClassifier
+    )
+
+
+
 
 
 ############################################################################
@@ -102,160 +107,6 @@ def test_dummy_classifier_predict():
     # Desk Check
     most_common_solutions_C = ["whale", "whale", "whale"]
     assert dum_clf_C.predict(X_test_C) == most_common_solutions_C
-
-
-############################################################################
-# Test KNeighbors Classifier
-############################################################################
-def test_kneighbors_classifier_kneighbors():
-    # In-class training set 1 (4 instances)
-    X_train_example1 = [[1, 1], [1, 0], [0.33, 0], [0, 0]]
-    y_train_example1 = ["bad", "bad", "good", "good"]
-    X_test_example1 = [[0.33, 1]]
-    knn_clf_example1 = MyKNeighborsClassifier(3)
-    knn_clf_example1.fit(X_train_example1, y_train_example1)
-    # Create expected returns
-    example1_distances_expected = [[0.670, 1.00, 1.053]]
-    example1_neighbor_indices_expected = [[0, 2, 3]]
-    # Get actual returns
-    example1_distances_returned, example1_neighbor_indices_returned = \
-        knn_clf_example1.kneighbors(X_test_example1)
-    # Assert
-    assert example1_neighbor_indices_returned == example1_neighbor_indices_expected
-    assert np.allclose(example1_distances_returned, example1_distances_expected, 0.01)
-
-    # In-class training set 2 (8 instances)
-    X_train_example2 = [
-        [3, 2],
-        [6, 6],
-        [4, 1],
-        [4, 4],
-        [1, 2],
-        [2, 0],
-        [0, 3],
-        [1, 6]]
-    y_train_example2 = ["no", "yes", "no", "no", "yes", "no", "yes", "yes"]
-    X_test_example2 = [[2, 3]]
-    knn_clf_example2 = MyKNeighborsClassifier(3)
-    knn_clf_example2.fit(X_train_example2, y_train_example2)
-    # Create Expected returns
-    example2_distances_expected = [[1.414, 1.414, 2.0]]
-    example2_neighbor_indices_expected = [[0, 4, 6]]
-    # Get actual returns
-    example2_distances_returned, example2_neighbor_indices_returned = \
-        knn_clf_example2.kneighbors(X_test_example2)
-    # Assert
-    assert example2_neighbor_indices_returned == example2_neighbor_indices_expected
-    assert np.allclose(example2_distances_returned, example2_distances_expected, 0.01)
-
-    # Bramer training set
-    header_bramer_example = ["Attribute 1", "Attribute 2"]
-    X_train_bramer_example = [
-        [0.8, 6.3],
-        [1.4, 8.1],
-        [2.1, 7.4],
-        [2.6, 14.3],
-        [6.8, 12.6],
-        [8.8, 9.8],
-        [9.2, 11.6],
-        [10.8, 9.6],
-        [11.8, 9.9],
-        [12.4, 6.5],
-        [12.8, 1.1],
-        [14.0, 19.9],
-        [14.2, 18.5],
-        [15.6, 17.4],
-        [15.8, 12.2],
-        [16.6, 6.7],
-        [17.4, 4.5],
-        [18.2, 6.9],
-        [19.0, 3.4],
-        [19.6, 11.1]]
-
-    y_train_bramer_example = ["-", "-", "-", "+", "-", "+", "-", "+", "+", "+", "-", "-", "-",\
-            "-", "-", "+", "+", "+", "-", "+"]
-    X_test_bramer_example = [[9.1, 11.0]]
-    knn_clf_bramer_example = MyKNeighborsClassifier(5)
-    knn_clf_bramer_example.fit(X_train_bramer_example, y_train_bramer_example)
-    # Create expected returns
-    bramer_example_distances_expected = [[0.608, 1.237, 2.202, 2.802, 2.915]]
-    bramer_example_neighbor_indices_expected = [[6, 5, 7, 4, 8]]
-    # Get actual returns
-    bramer_example_distances_returned, bramer_example_neighbor_indices_returned = \
-        knn_clf_bramer_example.kneighbors(X_test_bramer_example)
-    # Assert
-    assert bramer_example_neighbor_indices_returned == bramer_example_neighbor_indices_expected
-    assert np.allclose(bramer_example_distances_returned, bramer_example_distances_expected, 0.01)
-
-def test_kneighbors_classifier_predict():
-    # In-class training set 1 (4 instances)
-    X_train_example1 = [[1, 1], [1, 0], [0.33, 0], [0, 0]]
-    y_train_example1 = ["bad", "bad", "good", "good"]
-    X_test_example1 = [0.33, 1]
-    knn_clf_example1 = MyKNeighborsClassifier(3)
-    knn_clf_example1.fit(X_train_example1, y_train_example1)
-    # Create Expected returns
-    example1_y_predicted_solution = ["good"]
-    # Get actual returns
-    example1_y_predicted = knn_clf_example1.predict([X_test_example1])
-    # Assert
-    assert example1_y_predicted == example1_y_predicted_solution
-
-    # In-class training set 2 (8 instances)
-    X_train_example2 = [
-        [3, 2],
-        [6, 6],
-        [4, 1],
-        [4, 4],
-        [1, 2],
-        [2, 0],
-        [0, 3],
-        [1, 6]]
-    y_train_example2 = ["no", "yes", "no", "no", "yes", "no", "yes", "yes"]
-    X_test_example2 = [2, 3]
-    knn_clf_example2 = MyKNeighborsClassifier(3)
-    knn_clf_example2.fit(X_train_example2, y_train_example2)
-    # Create Expected returns
-    example2_y_predicted_solution = ["yes"]
-    # Get actual returns
-    example2_y_predicted = knn_clf_example2.predict([X_test_example2])
-    # Assert
-    assert example2_y_predicted == example2_y_predicted_solution
-
-    # Bramer training set
-    X_train_bramer_example = [
-        [0.8, 6.3],
-        [1.4, 8.1],
-        [2.1, 7.4],
-        [2.6, 14.3],
-        [6.8, 12.6],
-        [8.8, 9.8],
-        [9.2, 11.6],
-        [10.8, 9.6],
-        [11.8, 9.9],
-        [12.4, 6.5],
-        [12.8, 1.1],
-        [14.0, 19.9],
-        [14.2, 18.5],
-        [15.6, 17.4],
-        [15.8, 12.2],
-        [16.6, 6.7],
-        [17.4, 4.5],
-        [18.2, 6.9],
-        [19.0, 3.4],
-        [19.6, 11.1]]
-
-    y_train_bramer_example = ["-", "-", "-", "+", "-", "+", "-", "+", "+", "+", "-", "-", "-",\
-            "-", "-", "+", "+", "+", "-", "+"]
-    X_test_bramer_example = [9.1, 11.0]
-    knn_clf_bramer_example = MyKNeighborsClassifier(5)
-    knn_clf_bramer_example.fit(X_train_bramer_example, y_train_bramer_example)
-    # Create expected returns
-    bramer_example_y_predicted_solution = ["+"]
-    # Get actual returns
-    bramer_example_y_predicted = knn_clf_bramer_example.predict([X_test_bramer_example])
-    # Assert
-    assert bramer_example_y_predicted == bramer_example_y_predicted_solution
 
 
 ############################################################################
@@ -583,3 +434,233 @@ def test_naive_bayes_classifier_predict():
 
     # Assert
     assert y_predicted_clf3 == y_predicted_clf3_solution
+
+
+############################################################################
+# Test Decision Tree Classifier
+############################################################################
+def test_decision_tree_classifier_fit():
+    # interview dataset
+    header_interview = ["level", "lang", "tweets", "phd", "interviewed_well"]
+    X_train_interview = [
+        ["Senior", "Java", "no", "no"],
+        ["Senior", "Java", "no", "yes"],
+        ["Mid", "Python", "no", "no"],
+        ["Junior", "Python", "no", "no"],
+        ["Junior", "R", "yes", "no"],
+        ["Junior", "R", "yes", "yes"],
+        ["Mid", "R", "yes", "yes"],
+        ["Senior", "Python", "no", "no"],
+        ["Senior", "R", "yes", "no"],
+        ["Junior", "Python", "yes", "no"],
+        ["Senior", "Python", "yes", "yes"],
+        ["Mid", "Python", "no", "yes"],
+        ["Mid", "Java", "yes", "no"],
+        ["Junior", "Python", "no", "yes"]
+    ]
+    y_train_interview = ["False", "False", "True", "True", "True", "False", "True", \
+        "False", "True", "True", "True", "True", "True", "False"]
+
+    # Fit the classifier
+    tree_clf1 = MyDecisionTreeClassifier()
+    tree_clf1.fit(X_train_interview, y_train_interview)
+
+    # note: this tree uses the generic "att#" attribute labels because fit() does not and should not accept attribute names
+    # note: the attribute values are sorted alphabetically
+    # Expected returns
+    tree_interview = \
+            ["Attribute", "att0",
+                ["Value", "Senior",
+                    ["Attribute", "att2",
+                        ["Value", "no",
+                            ["Leaf", "False", 3, 5]
+                        ],
+                        ["Value", "yes",
+                            ["Leaf", "True", 2, 5]
+                        ]
+                    ]
+                ],
+                ["Value", "Mid",
+                    ["Leaf", "True", 4, 14]
+                ],
+                ["Value", "Junior", 
+                    ["Attribute", "att3",
+                        ["Value", "no", 
+                            ["Leaf", "True", 3, 5]
+                        ],
+                        ["Value", "yes", 
+                            ["Leaf", "False", 2, 5]
+                        ]
+                    ]
+                ]
+            ]
+
+    # Assert
+    assert tree_clf1.tree == tree_interview 
+
+    # RQ5 (fake) iPhone purchases dataset
+    header_iphone = ["standing", "job_status", "credit_rating", "buys_iphone"]
+    X_train_iphone = [
+        [1, 3, "fair"],
+        [1, 3, "excellent"],
+        [2, 3, "fair"],
+        [2, 2, "fair"],
+        [2, 1, "fair"],
+        [2, 1, "excellent"],
+        [2, 1, "excellent"],
+        [1, 2, "fair"],
+        [1, 1, "fair"],
+        [2, 2, "fair"],
+        [1, 2, "excellent"],
+        [2, 2, "excellent"],
+        [2, 3, "fair"],
+        [2, 2, "excellent"],
+        [2, 3, "fair"]
+    ]
+    y_train_iphone = ["no", "no", "yes", "yes", "yes", "no", "yes", "no", "yes", \
+        "yes", "yes", "yes", "yes", "no", "yes"]
+
+    # Fit the classifier
+    tree_clf2 = MyDecisionTreeClassifier()
+    tree_clf2.fit(X_train_iphone, y_train_iphone)
+
+    # Desk check for tree created in fit
+    tree_iphone = \
+        ["Attribute", "att0",
+            ["Value", 1,
+                ["Attribute", "att1",
+                    ["Value", 3,
+                        ["Leaf", "no", 2, 5]
+                    ],
+                    ["Value", 2,
+                        ["Attribute", "att2",
+                            ["Value", "fair",
+                                ["Leaf", "no", 1, 2]
+                            ],
+                            ["Value", "excellent",
+                                ["Leaf", "yes", 1, 2]
+                            ]
+                        ]
+                    ],
+                    ["Value", 1,
+                        ["Leaf", "yes", 1, 5]
+                    ]
+                ]
+            ],
+            ["Value", 2,
+                ["Attribute", "att2",
+                    ["Value", "fair",
+                        ["Leaf", "yes", 6, 10]
+                    ],
+                    ["Value", "excellent",
+                        ["Attribute", "att1",
+                            ["Value", 2,
+                                ["Leaf", "no", 2, 4 ]
+                            ],
+                            ["Value", 1,
+                                ["Leaf", "no", 2, 4]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    # Assert
+    assert tree_clf2.tree == tree_iphone
+
+def test_decision_tree_classifier_predict():
+    # interview dataset
+    header_interview = ["level", "lang", "tweets", "phd", "interviewed_well"]
+    X_train_interview = [
+        ["Senior", "Java", "no", "no"],
+        ["Senior", "Java", "no", "yes"],
+        ["Mid", "Python", "no", "no"],
+        ["Junior", "Python", "no", "no"],
+        ["Junior", "R", "yes", "no"],
+        ["Junior", "R", "yes", "yes"],
+        ["Mid", "R", "yes", "yes"],
+        ["Senior", "Python", "no", "no"],
+        ["Senior", "R", "yes", "no"],
+        ["Junior", "Python", "yes", "no"],
+        ["Senior", "Python", "yes", "yes"],
+        ["Mid", "Python", "no", "yes"],
+        ["Mid", "Java", "yes", "no"],
+        ["Junior", "Python", "no", "yes"]
+    ]
+    y_train_interview = ["False", "False", "True", "True", "True", "False", "True", \
+        "False", "True", "True", "True", "True", "True", "False"]
+
+    # Fit the classifier
+    tree_clf1 = MyDecisionTreeClassifier()
+    tree_clf1.fit(X_train_interview, y_train_interview)
+    # Predict
+    X_test_clf1 = [["Junior", "Java", "yes", "no"], ["Junior", "Java", "yes", "yes"]]
+    predicted_tree_clf1 = tree_clf1.predict(X_test_clf1)
+
+    # Create expected returns
+    expected_tree_clf1 = ["True", "False"]
+
+    # Assert
+    assert predicted_tree_clf1 == expected_tree_clf1
+
+    # RQ5 (fake) iPhone purchases dataset
+    header_iphone = ["standing", "job_status", "credit_rating", "buys_iphone"]
+    X_train_iphone = [
+        [1, 3, "fair"],
+        [1, 3, "excellent"],
+        [2, 3, "fair"],
+        [2, 2, "fair"],
+        [2, 1, "fair"],
+        [2, 1, "excellent"],
+        [2, 1, "excellent"],
+        [1, 2, "fair"],
+        [1, 1, "fair"],
+        [2, 2, "fair"],
+        [1, 2, "excellent"],
+        [2, 2, "excellent"],
+        [2, 3, "fair"],
+        [2, 2, "excellent"],
+        [2, 3, "fair"]
+    ]
+    y_train_iphone = ["no", "no", "yes", "yes", "yes", "no", "yes", "no", "yes", \
+        "yes", "yes", "yes", "yes", "no", "yes"]
+
+    # Fit the classifier
+    tree_clf2 = MyDecisionTreeClassifier()
+    tree_clf2.fit(X_train_iphone, y_train_iphone)
+    # Predict
+    X_test_clf2 = [[2, 2, "fair"], [1, 1, "excellent"]]
+    predicted_tree_clf2 = tree_clf2.predict(X_test_clf2)
+
+    # Create expected returns
+    expected_tree_clf2 = ["yes", "yes"]
+
+    # Assert
+    predicted_tree_clf2 == expected_tree_clf2
+
+
+############################################################################
+# Test Random Forest Classifier
+############################################################################
+def test_decision_tree_classifier_fit():
+    # interview dataset
+    header_interview = ["level", "lang", "tweets", "phd", "interviewed_well"]
+    X_train_interview = [
+        ["Senior", "Java", "no", "no"],
+        ["Senior", "Java", "no", "yes"],
+        ["Mid", "Python", "no", "no"],
+        ["Junior", "Python", "no", "no"],
+        ["Junior", "R", "yes", "no"],
+        ["Junior", "R", "yes", "yes"],
+        ["Mid", "R", "yes", "yes"],
+        ["Senior", "Python", "no", "no"],
+        ["Senior", "R", "yes", "no"],
+        ["Junior", "Python", "yes", "no"],
+        ["Senior", "Python", "yes", "yes"],
+        ["Mid", "Python", "no", "yes"],
+        ["Mid", "Java", "yes", "no"],
+        ["Junior", "Python", "no", "yes"]
+    ]
+    y_train_interview = ["False", "False", "True", "True", "True", "False", "True", \
+        "False", "True", "True", "True", "True", "True", "False"]
