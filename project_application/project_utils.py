@@ -80,14 +80,9 @@ def cross_val_predict(X, y, evaluation, classifier, stratify=False):
             X_test.append(X[test])
             y_true.append(y[test])
 
-        if type(classifier) == classifier_models.classifiers.MyRandomForestClassifier:
-            for i, row in enumerate (X_train):
-                row.append(y_train[i])
-            classifier.fit(X_train)
-        else:
-            print(type(classifier))
-            classifier.fit(X_train, y_train)
-            
+        classifier.fit(X_train, y_train)
+        classifier.print_decision_rules()
+
         y_pred = classifier.predict(X_test)
 
         # Compare y_test to y_pred for accuracy
@@ -103,3 +98,29 @@ def cross_val_predict(X, y, evaluation, classifier, stratify=False):
         return avg_accuracy, avg_error, y_true, y_pred
     else:
         return avg_accuracy, avg_error
+
+def train_test_predict(X, y, evaluation, classifier):
+
+    # Get training and testing data from train_test_split
+    X_train, X_test, y_train, y_test = evaluation.train_test_split(\
+        X, y, 0.33)
+    # Build the remainder set
+    remainder_set = []
+    for idx in range(len(X_train)):
+        remainder = X_train[idx]
+        remainder.append(y_train[idx])
+        remainder_set.append(remainder)
+
+    # Fit and predict
+    classifier.fit(remainder_set)
+    y_pred = classifier.predict(X_test)
+    #print("Y_PRED:", y_pred)
+
+    # Compare y_test to y_pred for accuracy
+    accuracy = evaluation.accuracy_score(y_test, y_pred)
+
+    # Get averages
+    accuracy = round((accuracy / 10), 2)
+    error = round(1.0 - accuracy, 2)
+
+    return accuracy, error, y_test, y_pred

@@ -550,19 +550,12 @@ def test_decision_tree_classifier_fit():
                         ["Leaf", "yes", 6, 10]
                     ],
                     ["Value", "excellent",
-                        ["Attribute", "att1",
-                            ["Value", 2,
-                                ["Leaf", "no", 2, 4 ]
-                            ],
-                            ["Value", 1,
-                                ["Leaf", "no", 2, 4]
-                            ]
-                        ]
+                        ["Leaf", "yes", 2, 4]
                     ]
                 ]
             ]
         ]
-
+    print(tree_clf2.tree)
     # Assert
     assert tree_clf2.tree == tree_iphone
 

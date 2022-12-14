@@ -52,11 +52,6 @@ def test_random_forest_classifier_fit():
     # Fit the classifier
     rf_clf.fit(remainder_set)
 
-    print(rf_clf.rand_forest)
-    # Check the output
-    for tree in rf_clf.rand_forest:
-        print(tree.tree)
-
     # Cannot test for random forest correctness as the return changes no matter the random state
     # Will check for correct attributes present in the classifier
     assert rf_clf.N == 20
