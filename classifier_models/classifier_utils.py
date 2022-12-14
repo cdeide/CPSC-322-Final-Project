@@ -384,6 +384,8 @@ def compute_priors(classifications, cur_instance):
             denom = 0
             for classification in classifications:
                 denom += priors[classification]["att" + str(i)][key]
+            if denom == 0:
+                denom = 1
             for classification in classifications:
                 priors[classification]["att" + str(i)][key] /= denom
 
