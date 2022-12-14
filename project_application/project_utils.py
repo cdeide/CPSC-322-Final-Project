@@ -117,7 +117,7 @@ def train_test_predict(X, y, evaluation, classifier):
     # Fit and predict
     classifier.fit(remainder_set)
     y_pred = classifier.predict(X_test)
-    # print("RECIEVED PRED:", y_pred)
+    print("RECIEVED PRED:", y_pred)
     # print("Y TRUE", y_test)
 
     # Compare y_test to y_pred for accuracy
