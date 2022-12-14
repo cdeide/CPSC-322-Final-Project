@@ -6,8 +6,7 @@
 #
 # Description: This file contains unit tests for the classifiers in 
 # classifiers.py. Unit tests verify the functionality of the fit and predict
-# functions for each classifier. (As well as the kneighbors funtionality in
-# the KNeighbors Classifier)
+# functions for each classifier.
 ############################################################################
 
 import numpy as np
@@ -17,7 +16,6 @@ from classifier_models.classifiers import (
     MyDummyClassifier,
     MyNaiveBayesClassifier,
     MyDecisionTreeClassifier,
-    MyRandomForestClassifier
     )
 
 
@@ -637,51 +635,3 @@ def test_decision_tree_classifier_predict():
 
     # Assert
     assert predicted_tree_clf2 == expected_tree_clf2
-
-
-############################################################################
-# Test Random Forest Classifier
-############################################################################
-def test_random_forest_classifier_fit():
-    # interview dataset
-    X_interview = [
-        ["Senior", "Java", "no", "no"],
-        ["Senior", "Java", "no", "yes"],
-        ["Mid", "Python", "no", "no"],
-        ["Junior", "Python", "no", "no"],
-        ["Junior", "R", "yes", "no"],
-        ["Junior", "R", "yes", "yes"],
-        ["Mid", "R", "yes", "yes"],
-        ["Senior", "Python", "no", "no"],
-        ["Senior", "R", "yes", "no"],
-        ["Junior", "Python", "yes", "no"],
-        ["Senior", "Python", "yes", "yes"],
-        ["Mid", "Python", "no", "yes"],
-        ["Mid", "Java", "yes", "no"],
-        ["Junior", "Python", "no", "yes"]
-    ]
-    y_interview = ["False", "False", "True", "True", "True", "False", "True", \
-        "False", "True", "True", "True", "True", "True", "False"]
-
-    # Split the data into 1/3 Test set with 2/3 Remainder
-    X_train, X_test, y_train, y_test = evaluators.train_test_split(\
-        X_interview, y_interview, 0.33)
-    # Build remainder from train sets
-    remainder_set = []
-    for idx in range(len(X_train)):
-        remainder = X_train[idx]
-        remainder.append(y_train[idx])
-        remainder_set.append(remainder)
-
-    rf_clf = MyRandomForestClassifier(30, 7, 2, 0)
-    # Fit the classifier
-    rf_clf.fit(remainder_set)
-
-    # Check the output
-    for tree in rf_clf.rand_forest:
-        for row in tree:
-            print(row)
-
-    # Create expected random forest
-
-    assert False == True

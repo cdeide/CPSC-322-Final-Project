@@ -249,10 +249,12 @@ class MyRandomForestClassifier:
     Attributes:
         remainder_set(list of list): The 2D list of training data after creating the random stratified
             test set from a third of the original dataset
-        N (int): The number of weak learners.
-        M (int): The number of better learners.
+        N (int): The number of total decision trees to make.
+        M (int): The number of most accurate decision trees to create rand_forest.
+        F (int): The number of attributes to consider splitting on for each node in a decision tree
         rand_forest(list of MyDecisionTreeClassifiers): The decision tree classifiers making up the
             random forest
+        rand_state (int): Value to seed the random class
     Notes:
         Loosely based on sklearn's RandomForestClassifier:
             https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
@@ -270,10 +272,17 @@ class MyRandomForestClassifier:
         self.rand_state = rand_state
 
     def fit(self, remainder_set):
+        """
+        Fits a random forest classifier to X_train and y_train using the TDIDT
+        (top down induction of decision tree) algorithm.
+
+        Args:
+            remainder_set (list of list): 2D list of data to fit the classifier to
+        """
 
         self.remainder_set = remainder_set
         # Build random forest classifier from remainder_set and M, N, and F values
-        classifier_utils.get_rand_forest(self.N, self.M, self.F, remainder_set)
+        classifier_utils.get_rand_forest(self, remainder_set)
 
     def predict(self, X_test):
         """Makes predictions for test instances in X_test.

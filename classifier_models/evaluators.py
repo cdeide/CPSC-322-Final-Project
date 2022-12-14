@@ -178,10 +178,16 @@ def bootstrap_sample(X, y=None, n_samples=None, random_state=None):
     # Get sample indexes
     X_sample = []
     y_sample = []
-    for _ in range(len(X)):
-        rand_idx = np.random.randint(len(X))
-        X_sample.append(X[rand_idx])
-        y_sample.append(y[rand_idx])
+    if n_samples is None:
+        for _ in range(len(X)):
+            rand_idx = np.random.randint(len(X))
+            X_sample.append(X[rand_idx])
+            y_sample.append(y[rand_idx])
+    else:
+        for _ in range(n_samples):
+            rand_idx = np.random.randint(len(X))
+            X_sample.append(X[rand_idx])
+            y_sample.append(y[rand_idx])
     # Get "out of bag" indexes
     X_out_of_bag = []
     y_out_of_bag = []

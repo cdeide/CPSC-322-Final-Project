@@ -10,6 +10,9 @@
 
 import numpy as np
 import operator
+# Need bootstrap_sample for random forest clf
+from classifier_models import evaluators as eval
+from classifier_models import classifiers as clf
 
 def compute_euclidean_distance(v1, v2):
     """
@@ -39,19 +42,7 @@ def find_majority_1D(classifications):
             class_frequency[value] += 1
         else:
             class_frequency[value] = 1
-
-    # Check for a tie among all classifications
-    check_dict = list(class_frequency.values())[0]
-    check = True
-    for key in class_frequency:
-        if class_frequency[key] != check_dict:
-            check = False
-            break
-    if check:
-        return None
-    # If here, then there was no tie
     y_predicted = max(class_frequency, key=class_frequency.get)
-
     return y_predicted
 
 def find_majority_2D(classifications):
@@ -182,7 +173,6 @@ def find_naive_prediction(predictions, classifications, priors):
     Returns:
         obj: The prediction value chosen from the predictions
     """
-
     # Choose largest prediction value
     max_class_value = -1    # -1 instead of 0 to avoid falsely finding a posterior match
     for classification in classifications:
@@ -216,7 +206,6 @@ def shuffle_data(random_state, X, y=None):
     Returns:
         X and y: returns the now shuffled parellel lists
     """
-
     if random_state is not None:
         np.random.seed(random_state)
 
@@ -240,7 +229,6 @@ def split_data(n_splits, X):
     Returns:
         list of list: A 2D list with lists of split data from X
     """
-
     splits = []
     for _ in range(n_splits):
         splits.append([])
@@ -269,7 +257,6 @@ def split_stratified_data(n_splits, group_indices):
     Returns:
         list of list: A 2D list with lists of stratified split data from X
     """
-
     splits = []
     for _ in range(n_splits):
         splits.append([])
@@ -296,7 +283,6 @@ def fold_data(n_splits, splits):
     Returns:
         list of list: a list of tuples, each with a test set and train set
     """
-
     folds = []
     for test_idx in range(n_splits):
         train_set = []
@@ -324,7 +310,6 @@ def group_by_index(y):
         list of list: A 2D list where each list is a group of indexes with the
         same classification value
     """
-
     groups = []
     classes = []
     for i in range(len(y)):
@@ -350,7 +335,6 @@ def group_by_classification(y):
     Returns:
         list: list of one of each unique classification within y
     """
-
     classifications = []
     classifications_count = []
     for i in range(len(y)):
@@ -377,7 +361,6 @@ def compute_priors(classifications, cur_instance):
         dictionary: returns a nested dictionary that maps each attribute and its unique values to
         a prior
     """
-
     # Build priors dictionary architecture
     priors = {}
     for classification in classifications:
@@ -421,7 +404,6 @@ def get_accurance(key, attribute, header, cur_instance):
     Returns:
         float: The number of times the attribute value occurs over the total number of instances
     """
-
     # Get the index of the column we want to look through
     idx = 0
     for i in range(len(header)):
@@ -450,7 +432,6 @@ def select_attribute(cur_instance, header, available_attributes):
     Returns:
         string: The attribute selected
     """
-
     # Get unique class labels
     y_train = []
     for row in cur_instance:
@@ -489,7 +470,6 @@ def partition_instances(cur_instance, header, split_attribute, att_domains):
     Returns:
         dictionary: A dictionary of partitioned instances based on the split_attribute value
     """
-
     # this is a group by attribute domain
     att_index = header.index(split_attribute)
 
@@ -532,7 +512,6 @@ def tdidt(self, cur_instance, available_attributes, attribute_domains):
     Returns:
         list of list: A nested list structure representing the decision tree
     """
-
     # Select attribute to split on using entropy
     split_attribute = select_attribute(cur_instance, self.header, available_attributes)
     available_attributes.remove(split_attribute)
@@ -541,6 +520,10 @@ def tdidt(self, cur_instance, available_attributes, attribute_domains):
     tree = ["Attribute", split_attribute]
 
     partitions = partition_instances(cur_instance, self.header, split_attribute, attribute_domains)
+    class_values = list(partitions.keys())
+    class_frequency = []
+    for class_value in class_values:
+        class_frequency.append((class_value, len(partitions[class_value])))
 
     # Check for base cases, if none then recurse
     for att_value, att_partition in partitions.items():
@@ -555,24 +538,12 @@ def tdidt(self, cur_instance, available_attributes, attribute_domains):
             class_partition = []
             for value in att_partition:
                 class_partition.append(value[-1])
-            # Find the majority
-            majority_class = find_majority_1D(class_partition)
-
-            if majority_class != None:
-                # Majority classification found
-                value_subtree.append(["Leaf", majority_class, len(att_partition), len(cur_instance)])
-            # No majority found from clash, choose alphabetically
-            else:
-                for i, value in enumerate(class_partition):
-                    if i == 0:
-                        majority_class = value
-                    else:
-                        if value < majority_class:
-                            majority_class = value
-                value_subtree.append(["Leaf", majority_class, len(att_partition), len(cur_instance)])
+            value_subtree.append(["Leaf", find_majority_1D(class_partition), len(att_partition), len(cur_instance)])
         elif len(att_partition) == 0:
             # Case 3: Empty partition, backtrack
-            continue
+            majority_class = max(class_frequency, key=operator.itemgetter(1))
+            class_count_total = sum(class_tuple[1] for class_tuple in class_frequency)
+            tree = ["Leaf", majority_class[0], majority_class[1], class_count_total]
         else:
             # Recurse
             subtree = tdidt(self, att_partition, available_attributes.copy(), attribute_domains.copy())
@@ -591,7 +562,6 @@ def find_tree_prediction(tree_level, test_instance):
     Returns:
         string: The predicted classification
     """
-
     prediction = ""
     if tree_level[0] == "Attribute":
         # Parse instances split attribute index
@@ -624,7 +594,6 @@ def find_rule(self, tree_level, rule, attribute_names=None, class_name=None):
     Returns:
         string: The rule being built
     """
-
     # Attribute level
     if tree_level[0] == "Attribute":
         for value_idx, value_list in enumerate(tree_level):
@@ -657,10 +626,91 @@ def find_rule(self, tree_level, rule, attribute_names=None, class_name=None):
 
     return rule
 
-def get_forest_prediction(rand_forest, row):
+def get_X_y(dataset):
+    """
+    Function gets the X and y data lists from a 2D dataset where the last
+    element of each row is the y instance.
 
+    Args:
+        dataset (list of list): 2D dataset containing X and y data
+
+    Returns:
+        (list of list), (list): X and y respectively
+    """
+    X =[]
+    y = []
+    for row in dataset:
+        X.append(row[:-1])
+        y.append(row[-1])
+
+    return X, y
+
+def prune_rand_forest(rand_forest_clf, tree_accuracies, rand_forest):
+    """
+    Function selects to M most accurate trees from the rand_forest param and
+    returns the new pruned random forest.
+
+    Args:
+        rand_forest_clf (MyRandomForestClassifier object): Instance of the Random Forest Classifier
+        tree_accuracies (list): list of tree's accuracy score parallel to rand_forest list
+        rand_forest (list): list of decision trees parallel to tree_accuracies
+
+    Returns:
+        list of decision trees: The top M most accurate decision trees
+    """
+    tree_accuracy_tuples = []
+    # Sort the forest and tree_accuracies parallel to one another
+    for idx in range(len(rand_forest)):
+        tree_accuracy_tuples.append((rand_forest[idx], tree_accuracies[idx]))
+    tree_accuracy_tuples.sort(key = lambda x: x[1], reverse=True)
+    # Line above from https://www.geeksforgeeks.org/python-program-to-sort-a-list-of-tuples-by-second-item/
+
+    # Get top M trees
+    top_M_trees = tree_accuracy_tuples[:rand_forest_clf.M]
+    pruned_rand_forest = []
+    for tree_tuple in top_M_trees:
+        pruned_rand_forest.append(tree_tuple[0])
+
+    return pruned_rand_forest
+
+def get_rand_forest(rand_forest_clf, remainder_set):
+    """
+    Function builds the random forest for a random forest classifier given the remainder set
+
+    Args:
+        rand_forest_clf (MyRandomForestClassifier object): Instance of the MyRandomForestClassifier
+        remainder_set (list of list): 2D list of data
+    """
+    tree_accuracies = []
+    rand_forest = []
+    # Build the initial set of N decision trees
+    for _ in range(rand_forest_clf.N):
+        # Get training and validation set using bootstrap method
+        X_remainder, y_remainder = get_X_y(remainder_set)
+        X_train, X_test, y_train, y_test = eval.bootstrap_sample(\
+            X_remainder, y_remainder, rand_forest_clf.F, rand_forest_clf.rand_state)
+        # Create new decision tree and get prediction
+        tree_clf = clf.MyDecisionTreeClassifier()
+        tree_clf.fit(X_train, y_train)
+        y_predicted = tree_clf.predict(X_test)
+        # Add the tree to the forest and get it's accuracy
+        rand_forest.append(tree_clf)
+        tree_accuracies.append(eval.accuracy_score(y_test, y_predicted, True))
+
+    # Prune the random forest to get the M most accurate decision trees
+    rand_forest = prune_rand_forest(rand_forest_clf, tree_accuracies, rand_forest)
+    # Add rand forest to the classifier's attribute
+    rand_forest_clf.rand_forest = rand_forest
+
+def get_forest_prediction(rand_forest, row):
+    """
+    Function gets the prediction from the random forest for an instance of X_test
+
+    Args:
+        rand_forest (list of decision trees): M decision trees making up the random forest
+        row (list): instance from X_test
+    """
     predictions = []
     for tree in rand_forest:
         predictions.append(find_tree_prediction(tree.tree, row))
     return(find_majority_1D(predictions))
-
