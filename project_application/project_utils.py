@@ -8,6 +8,9 @@
 # Jupyter Notebook to help clean and prepare data.
 ############################################################################
 
+from classifier_models.classifiers import MyRandomForestClassifier 
+import classifier_models.classifiers
+
 def about_discretizer(about_data):
     # TODO: make discretizer
     return None
@@ -76,8 +79,15 @@ def cross_val_predict(X, y, evaluation, classifier, stratify=False):
         for test in fold[1]:
             X_test.append(X[test])
             y_true.append(y[test])
-    
-        classifier.fit(X_train, y_train)
+
+        if type(classifier) == classifier_models.classifiers.MyRandomForestClassifier:
+            for i, row in enumerate (X_train):
+                row.append(y_train[i])
+            classifier.fit(X_train)
+        else:
+            print(type(classifier))
+            classifier.fit(X_train, y_train)
+            
         y_pred = classifier.predict(X_test)
 
         # Compare y_test to y_pred for accuracy
