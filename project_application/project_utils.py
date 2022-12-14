@@ -81,17 +81,20 @@ def cross_val_predict(X, y, evaluation, classifier, stratify=False):
             y_true.append(y[test])
 
         classifier.fit(X_train, y_train)
-        classifier.print_decision_rules()
+        #print(classifier.tree)
 
         y_pred = classifier.predict(X_test)
+        # print("RECIEVED PRED:", y_pred)
+        # print("Y TRUE", y_true)
 
         # Compare y_test to y_pred for accuracy
         accuracy = evaluation.accuracy_score(y_true, y_pred)
-
+        #print("ACCURACY:", accuracy)
         avg_accuracy += accuracy
 
     # Get averages
     avg_accuracy = round((avg_accuracy / 10), 2)
+    #print("AVG ACCURACY:", avg_accuracy)
     avg_error = round(1.0 - avg_accuracy, 2)
 
     if stratify:
@@ -114,7 +117,8 @@ def train_test_predict(X, y, evaluation, classifier):
     # Fit and predict
     classifier.fit(remainder_set)
     y_pred = classifier.predict(X_test)
-    #print("Y_PRED:", y_pred)
+    print("RECIEVED PRED:", y_pred)
+    print("Y TRUE", y_true)
 
     # Compare y_test to y_pred for accuracy
     accuracy = evaluation.accuracy_score(y_test, y_pred)

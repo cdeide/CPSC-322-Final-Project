@@ -223,9 +223,11 @@ class MyDecisionTreeClassifier:
         predictions = []
         for instance in X_test:
             prediction = classifier_utils.find_tree_prediction(self.tree, instance)
+            # print("PREDICTION", prediction)
             # print("Instance:", instance)
             # print("Prediction:", prediction)
             predictions.append(prediction)
+        #print("PREDICTIONS:", predictions)
         return predictions
 
     def print_decision_rules(self, attribute_names=None, class_name="class"):

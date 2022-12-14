@@ -542,7 +542,7 @@ def tdidt(self, cur_instance, available_attributes, attribute_domains):
 
         if len(att_partition) > 0 and same_class_label(att_partition):
             # Case 1: Make leaf node
-            value_subtree.append(["Leaf", str(att_partition[0][-1]), len(att_partition), len(cur_instance)])
+            value_subtree.append(["Leaf", att_partition[0][-1], len(att_partition), len(cur_instance)])
         elif len(att_partition) > 0 and len(available_attributes) == 0:
             # Case 2: Clash occured
             value_subtree.append(["Leaf", find_majority_1D(class_partition), len(att_partition), len(cur_instance)])
@@ -570,41 +570,23 @@ def find_tree_prediction(tree_level, test_instance):
         string: The predicted classification
     """
 
-    # if tree_level[0] == "Leaf":
-    #     return tree_level[1]
-
-    # att_idx = int(tree_level[1][3])
-    # for idx in range(2, len(tree_level)):
-    #     values = tree_level[idx]
-    #     if values[1] == test_instance[att_idx]:
-    #         return find_tree_prediction(values[2], test_instance)
-
-    prediction = None
+    prediction = ""
     if tree_level[0] == "Attribute":
-        # Go down another level
-        prediction = find_tree_prediction(tree_level[2:], test_instance)
-
-        # for i, char in enumerate(tree_level[1]):
-        #     if i == 3:
-        #         att_idx = int(char)
-        # # Find index of attribute value
-        # for value_idx, value_list in enumerate(tree_level):
-        #     # Skip first two elems in list
-        #     if value_idx >= 2 and value_list[1] == test_instance[att_idx]:
-        #         # Recurse with next level down
-        #         prediction = find_tree_prediction(value_list[2], test_instance)
-        #         break
-    if tree_level[0][0] == "Value":
-        # Check if value is in the test instance
-        check = False
-        for idx in range(len(tree_level)):
-            if tree_level[idx][1] in test_instance:
-                check = True
-                prediction = find_tree_prediction(tree_level[idx][2], test_instance)
-            if check == False:
-                pass
-    if tree_level[0] == "Leaf":
-        return tree_level[1]
+        # Parse instances split attribute index
+        for i, char in enumerate(tree_level[1]):
+            if i == 3:
+                att_idx = int(char)
+        # Find index of attribute value
+        for value_idx, value_list in enumerate(tree_level):
+            # Skip first two elems in list
+            if value_idx >= 2 and value_list[1] == test_instance[att_idx]:
+                # Recurse with next level down
+                prediction = find_tree_prediction(value_list[2], test_instance)
+                break
+    # Once we have reached the leaf node, simply grab the predicted value
+    elif tree_level[0] == "Leaf":
+        prediction = tree_level[1]
+        return prediction
 
     return prediction
 
