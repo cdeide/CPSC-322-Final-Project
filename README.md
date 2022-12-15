@@ -1,7 +1,7 @@
 # CPSC-322-Final-Project
 
 -- Project Overview --
-This project uses several Machine Leerning Algorithms to produce classification predictions for unseen instances in datasets containing information about TV shows such as 'The Office'. The classification attribute that we are trying to best predict for these datasets is the IMDb rating value. Classifiers used in this project contain a Dummy Classifier, Naive Bayes Classifier, Decision Tree Classifier, and a Random Forest Classifier.
+This project uses several Machine Learning Algorithms to produce classification predictions for unseen instances in datasets containing information about TV shows such as 'The Office'. The classification attribute that we are trying to best predict for these datasets is the IMDb rating value. Classifiers used in this project contain a Dummy Classifier, Naive Bayes Classifier, Decision Tree Classifier, and a Random Forest Classifier.
 
 -- How To Run --
 Information about our classifications over this dataset can be found in the Jupyter Notebook titled "project_review.ipynb". Running this notebook will produce the information we found important to highlight.
