@@ -8,12 +8,68 @@
 # Jupyter Notebook to help clean and prepare data.
 ############################################################################
 
-from classifier_models.classifiers import MyRandomForestClassifier 
-import classifier_models.classifiers
-
 def about_discretizer(about_data):
-    # TODO: make discretizer
-    return None
+    """
+    Function discretizes the about string given by looking for
+    key character and building a list of name matches.
+
+    Args:
+        about_data (string): A string describing the contents of an episode
+
+    Returns:
+        list of strings: A list of the character names present in the dataset
+    """
+
+    character_list = []
+    return_list = []
+    for about_section in about_data:
+        if "Dwight" in about_section:
+            character_list.append("Dwight")
+        if "Michael" in about_section:
+            character_list.append("Michael")
+        if "Jim" in about_section:
+            character_list.append("Jim")
+        if "Pam" in about_section:
+            character_list.append("Pam")
+        if "Jan" in about_section:
+            character_list.append("Jan")
+        if "Andy" in about_section:
+            character_list.append("Andy")
+        if "Kevin" in about_section:
+            character_list.append("Kevin")
+        if "Angela" in about_section:
+            character_list.append("Angela")
+        if "Toby" in about_section:
+            character_list.append("Toby")
+        if "Holly" in about_section:
+            character_list.append("Holly")
+        if "Kelly" in about_section:
+            character_list.append("Kelly")
+        if "Stanley" in about_section:
+            character_list.append("Stanley")
+        if "Ryan" in about_section:
+            character_list.append("Ryan")
+        if "Meredith" in about_section:
+            character_list.append("Meredith")
+        if "Karen" in about_section:
+            character_list.append("Karen")
+        if "Darryl" in about_section:
+            character_list.append("Darryl")
+        if "Gabe" in about_section:
+            character_list.append("Gabe")
+        if "Roy" in about_section:
+            character_list.append("Roy")
+        if "Oscar" in about_section:
+            character_list.append("Oscar")
+        if "Phyllis" in about_section:
+            character_list.append("Phyllis")
+        if "Creed" in about_section:
+            character_list.append("Creed")
+        else:
+            character_list.append("Other")
+        return_list.append(character_list)
+        character_list = []
+    return return_list
 
 def get_instances(column_list):
     """
@@ -81,20 +137,15 @@ def cross_val_predict(X, y, evaluation, classifier, stratify=False):
             y_true.append(y[test])
 
         classifier.fit(X_train, y_train)
-        #print(classifier.tree)
 
         y_pred = classifier.predict(X_test)
-        # print("RECIEVED PRED:", y_pred)
-        # print("Y TRUE", y_true)
 
         # Compare y_test to y_pred for accuracy
         accuracy = evaluation.accuracy_score(y_true, y_pred)
-        #print("ACCURACY:", accuracy)
         avg_accuracy += accuracy
 
     # Get averages
     avg_accuracy = round((avg_accuracy / 10), 2)
-    #print("AVG ACCURACY:", avg_accuracy)
     avg_error = round(1.0 - avg_accuracy, 2)
 
     if stratify:
@@ -117,8 +168,6 @@ def train_test_predict(X, y, evaluation, classifier):
     # Fit and predict
     classifier.fit(remainder_set)
     y_pred = classifier.predict(X_test)
-    print("RECIEVED PRED:", y_pred)
-    # print("Y TRUE", y_test)
 
     # Compare y_test to y_pred for accuracy
     accuracy = evaluation.accuracy_score(y_test, y_pred)
